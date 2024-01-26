@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerHealthUI : MonoBehaviour
 {
+    public static PlayerHealthUI Instance;
     [SerializeField] List<PlayerHealthPointUI> playerHealthPoints = new List<PlayerHealthPointUI>();
     [SerializeField] int health = 3;
-    void Start()
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
