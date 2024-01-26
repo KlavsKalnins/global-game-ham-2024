@@ -8,10 +8,22 @@ public class WeaponUI : MonoBehaviour
 {
     [SerializeField] TMP_Text name;
     [SerializeField] Image reloadingImage;
+    [SerializeField] TMP_Text ammoText;
+
+    public void Init(string name, string ammoText)
+    {
+        this.name.text = name;
+        this.ammoText.text = ammoText;
+    }
 
     public void StartReload(float time)
     {
         StartCoroutine(ReloadCoroutine(time));
+    }
+
+    public void UpdateAmmoText(string ammoText)
+    {
+        this.ammoText.text = ammoText;
     }
 
     private IEnumerator ReloadCoroutine(float reloadTime)
@@ -22,20 +34,15 @@ public class WeaponUI : MonoBehaviour
 
         while (timer < reloadTime)
         {
-            // Calculate the progress as a ratio between the timer and reloadTime
             float progress = timer / reloadTime;
 
-            // Update the fill amount based on the progress
             reloadingImage.fillAmount = Mathf.Lerp(startFillAmount, 0f, progress);
 
-            // Increment the timer
             timer += Time.deltaTime;
 
-            // Wait for the next frame
             yield return null;
         }
 
-        // Ensure the fill amount is set to 0 at the end of the reload process
         reloadingImage.fillAmount = 0f;
     }
 }

@@ -15,11 +15,16 @@ public class WeaponBehavior : MonoBehaviour
     public float range;
 
     [SerializeField] BulletBehavior bulletPrefab;
-    public WeaponUI weaponUi;
+    public WeaponUI weaponUiPrefab;
+    public WeaponUI weaponUiReference;
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+    private void Start()
+    {
+        HudManager.Instance.AddWeaponUI(this);
     }
 
     public IEnumerator Shoot()
@@ -32,6 +37,7 @@ public class WeaponBehavior : MonoBehaviour
             {
                 // spawn bullet
                 ammoInChaimber -= 1;
+                weaponUiReference.UpdateAmmoText($"{ammoInChaimber}/{clipSize} : {ammoAmount}");
                 var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 StartCoroutine(bullet.DeathTimer(range));
@@ -56,7 +62,7 @@ public class WeaponBehavior : MonoBehaviour
     void StartReloading()
     {
         Debug.Log($"KK: Reloading");
-        weaponUi.StartReload(reloadSeconds);
+        weaponUiReference.StartReload(reloadSeconds);
         // invoke reload so ui knows;
         StartCoroutine(Reloading());
     }
