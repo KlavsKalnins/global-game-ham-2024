@@ -50,7 +50,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         hasBeenStun = true;
         agent.enabled = false;
         Debug.Log($"KK magnitude: {rigidbody.velocity.magnitude}");
-        while (rigidbody.velocity.magnitude > 1f)
+        while (rigidbody.velocity.magnitude > 3f)
         {
             yield return new WaitForSeconds(1);
         }
@@ -61,11 +61,19 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         ResetAgent();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            StartCoroutine(WaitTillResetAgent());
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Untagged"))
         {
-            Debug.Log("its untaggeddd");
             return;
         }
         Debug.Log($"KK: OnCollisionExit {collision.gameObject.name}");
@@ -77,7 +85,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
 
     public void Damage(int damage)
     {
-        Debug.Log($" {health} {damage}");
+        Debug.Log($"DAMAGE ENEMY {health} - {damage} = {health - damage}");
         health -= damage;
         if (health <= 0)
         {
