@@ -273,17 +273,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d285e7786fe260e44bb83c63638f9278,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d285e7786fe260e44bb83c63638f9278,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d285e7786fe260e44bb83c63638f9278,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d285e7786fe260e44bb83c63638f9278,
         type: 3}
@@ -344,6 +344,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: d285e7786fe260e44bb83c63638f9278,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8c4407479be15334fb9d2b8062756c56, type: 2}
+    - target: {fileID: 5866666021909216657, guid: d285e7786fe260e44bb83c63638f9278,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6034506565674125575, guid: d285e7786fe260e44bb83c63638f9278,
         type: 3}
@@ -8338,6 +8348,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3262191307456086144, guid: d29aceeea0de38d4ab9ac6a4187451fe, type: 3}
   spawnedEnemy: {fileID: 0}
+--- !u!95 &1311651804 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d285e7786fe260e44bb83c63638f9278,
+    type: 3}
+  m_PrefabInstance: {fileID: 46059233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1331434488
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,7 +8724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458405951}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8768,6 +8784,8 @@ MonoBehaviour:
   _playerMoveInput: {x: 0, y: 0, z: 0}
   speed: 50
   damping: 5
+  lowerBodyTransform: {fileID: 46059234}
+  rotationTime: 0.05
 --- !u!136 &1458405956
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8831,6 +8849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerIsGrounded: 1
+  animatorUpperBody: {fileID: 1834819717}
+  animatorBodyBody: {fileID: 1311651804}
   sphereRadius: 1.52
   sphereOffset: {x: 0, y: 1.55, z: 0}
   groundLayer:
@@ -9323,6 +9343,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 46c02584e7e1ccc4d988878826d0d85a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 46c02584e7e1ccc4d988878826d0d85a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e97375efd48405747a938954d735a45a, type: 2}
     - target: {fileID: 6477518236391690003, guid: 46c02584e7e1ccc4d988878826d0d85a,
         type: 3}
       propertyPath: m_Layer
@@ -9417,6 +9447,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 5
   dampingFactor: 0.95
+--- !u!95 &1834819717 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 46c02584e7e1ccc4d988878826d0d85a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1834819711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1859221220
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     public static Action OnPlayerInAir;
     public static Action<bool> OnPlayerIsGrounded;
 
+    public Animator animatorUpperBody;
+    public Animator animatorBodyBody;
+
     private void Awake()
     {
         Instance = this;
@@ -23,7 +26,6 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Perform SphereCast
         var prevGrounded = _playerIsGrounded;
         _playerIsGrounded = Physics.SphereCast(transform.position + sphereOffset, sphereRadius, Vector3.down, out RaycastHit hitInfo, 0.1f, groundLayer);
 
@@ -31,7 +33,6 @@ public class PlayerManager : MonoBehaviour
         {
             OnPlayerGrounded?.Invoke();
             OnPlayerIsGrounded?.Invoke(true);
-            //Debug.Log("Player grounded once!");
         }
         if (prevGrounded == true && _playerIsGrounded == false)
         {
@@ -42,7 +43,6 @@ public class PlayerManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Draw a wire sphere in the Scene view to visualize the sphere cast
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + sphereOffset - new Vector3(0, sphereRadius, 0), sphereRadius);
     }

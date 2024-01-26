@@ -15,6 +15,8 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     [SerializeField] HumanoidStatsSO stats;
     [SerializeField] int health;
 
+    private bool IsAttackingPlayer;
+
     void Start()
     {
         health = stats.Health;
@@ -31,6 +33,12 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         if (agent != null && !hasBeenStun && agent.isActiveAndEnabled)
         {
             agent.SetDestination(PlayerHive.Instance.transform.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            IsAttackingPlayer = !IsAttackingPlayer;
+            agent.enabled = IsAttackingPlayer;
         }
     }
 
@@ -126,4 +134,5 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
             Destroy(gameObject);
         }
     }
+
 }

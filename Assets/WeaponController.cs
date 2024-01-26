@@ -47,6 +47,7 @@ public class WeaponController : MonoBehaviour
 
     void ShootWeapons()
     {
+        PlayerManager.Instance.animatorUpperBody.SetBool("Shoot", true);
         debugWeapons.text = "";
         weapons.ForEach(w =>
         {
@@ -58,6 +59,7 @@ public class WeaponController : MonoBehaviour
 
     void StopShootCoroutines()
     {
+        PlayerManager.Instance.animatorUpperBody.SetBool("Shoot", false);
         shootCoroutines.ForEach(coroutine =>
         {
             if (coroutine != null)

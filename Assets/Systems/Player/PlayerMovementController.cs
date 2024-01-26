@@ -14,24 +14,46 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float damping = 2f;
 
-    void Update()
+    [SerializeField] Transform lowerBodyTransform;
+    public float rotationTime = 0.3f;
+
+    private void Awake()
     {
         _playerMoveInput = Vector3.zero;
+    }
+
+    void Update()
+    {
+        var prevPlayerInput = _playerMoveInput;
+        _playerMoveInput = Vector3.zero;
+        bool didPressAnyKey = false;
         if (Input.GetKey(moveUp))
         {
             _playerMoveInput += transform.forward;
+            didPressAnyKey = true;
         }
         if (Input.GetKey(moveDown))
         {
             _playerMoveInput -= transform.forward;
+            didPressAnyKey = true;
         }
         if (Input.GetKey(moveRight))
         {
             _playerMoveInput += transform.right;
+            didPressAnyKey = true;
         }
         if (Input.GetKey(moveLeft))
         {
             _playerMoveInput -= transform.right;
+            didPressAnyKey = true;
+        }
+        if (_playerMoveInput == Vector3.zero)
+        {
+            PlayerManager.Instance.animatorBodyBody.SetBool("IsWalking", false);
+        } 
+        else
+        {
+            PlayerManager.Instance.animatorBodyBody.SetBool("IsWalking", true);
         }
 
         _playerMoveInput.Normalize();
@@ -45,5 +67,11 @@ public class PlayerMovementController : MonoBehaviour
         /*        _rigidbody.AddForce(-_rigidbody.velocity * damping, ForceMode.VelocityChange);
                 _rigidbody.AddRelativeForce(_playerMoveInput * speed, ForceMode.Force);*/
         //_rigidbody.AddRelativeForce(_playerMoveInput * speed, ForceMode.Force);
+
+        if (didPressAnyKey)
+        {
+            float rotationAngle = Mathf.Atan2(_playerMoveInput.x, _playerMoveInput.z) * Mathf.Rad2Deg;
+            LeanTween.rotateY(lowerBodyTransform.gameObject, rotationAngle, rotationTime).setEase(LeanTweenType.easeInOutQuad);
+        }
     }
 }
