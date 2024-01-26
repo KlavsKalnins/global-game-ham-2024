@@ -21,15 +21,8 @@ public class WeaponBehavior : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    void Update()
-    {
-        
-    }
-
     public IEnumerator Shoot()
     {
-        Debug.Log($"KK: {isReloading}");
-
         if (!isReloading)
             Shoot();
         for (int i = 0; i < clipSize; i++)
@@ -38,24 +31,32 @@ public class WeaponBehavior : MonoBehaviour
             {
                 // spawn bullet
                 ammoInChaimber -= 1;
-
                 var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 StartCoroutine(bullet.DeathTimer(range));
                 bulletRb.AddForce(transform.forward * 50, ForceMode.Impulse);
                 Debug.Log($"KK: spawned bullet");
+                if (ammoInChaimber == 0)
+                {
+                    StartReloading();
+                }
                 yield return new WaitForSeconds(fireRate);
             } 
             else
             {
                 if (!isReloading)
                 {
-                    Debug.Log($"KK: Reloading");
-
-                    StartCoroutine(Reloading());
+                    StartReloading();
                 }
             }
         }
+    }
+
+    void StartReloading()
+    {
+        Debug.Log($"KK: Reloading");
+
+        StartCoroutine(Reloading());
     }
 
     IEnumerator Reloading()
