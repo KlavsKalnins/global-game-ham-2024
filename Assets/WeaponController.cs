@@ -7,6 +7,7 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] TMP_Text debugWeapons;
     [SerializeField] List<WeaponBehavior> weapons;
+    //[SerializeField] List<WeaponUI> weaponsUI; // var WeaponUI
     [SerializeField] bool isShooting;
     private List<Coroutine> shootCoroutines = new List<Coroutine>();
     void Start()

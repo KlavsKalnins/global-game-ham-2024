@@ -15,6 +15,7 @@ public class WeaponBehavior : MonoBehaviour
     public float range;
 
     [SerializeField] BulletBehavior bulletPrefab;
+    public WeaponUI weaponUi;
 
     private void OnDrawGizmos()
     {
@@ -55,7 +56,8 @@ public class WeaponBehavior : MonoBehaviour
     void StartReloading()
     {
         Debug.Log($"KK: Reloading");
-
+        weaponUi.StartReload(reloadSeconds);
+        // invoke reload so ui knows;
         StartCoroutine(Reloading());
     }
 
