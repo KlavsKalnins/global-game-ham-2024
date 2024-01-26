@@ -10,12 +10,15 @@ public class MeleeController : MonoBehaviour
 
     [SerializeField] Rigidbody rigidbody;
 
+    [SerializeField] MeleeUI meleeUI;
+
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
 
         if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
         {
+            meleeUI.StartReload(cooldownTime);
             cooldownTimer = cooldownTime;
             Vector3 forwardVector = rigidbody.transform.forward;
             rigidbody.AddForce(forwardVector * forwardForce, ForceMode.Impulse);
