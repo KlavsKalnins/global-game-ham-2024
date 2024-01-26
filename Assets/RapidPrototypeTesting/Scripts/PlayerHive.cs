@@ -7,7 +7,7 @@ public class PlayerHive : MonoBehaviour
     public static PlayerHive Instance;
     public bool isMeleeInvulnerability;
 
-    private HumanoidStatsSO stats;
+    [SerializeField] HumanoidStatsSO stats;
 
     private void OnEnable()
     {

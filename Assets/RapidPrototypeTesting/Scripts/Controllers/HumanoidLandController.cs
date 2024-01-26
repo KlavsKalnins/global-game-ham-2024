@@ -7,7 +7,6 @@ public class HumanoidLandController : MonoBehaviour
     public Transform CameraFollow;
 
     [SerializeField] HumanoidLandInput _input;
-    [SerializeField] CameraController _cameraController;
     [SerializeField] GameObject _playerObject; // Added for animations
 
     Vector3 _playerObjectOriginalLocalPosition = Vector3.zero; // Added for animations
@@ -109,12 +108,9 @@ public class HumanoidLandController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_cameraController.UsingOrbitalCamera)
-        {
-            _playerLookInput = GetLookInput();
-            PlayerLook();
-            PitchCamera();
-        }
+        _playerLookInput = GetLookInput();
+        PlayerLook();
+        PitchCamera();
         
         _playerMoveInput = GetMoveInput();
         PlayerVariables();
