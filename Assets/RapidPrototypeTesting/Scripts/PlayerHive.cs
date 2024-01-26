@@ -6,17 +6,13 @@ public class PlayerHive : MonoBehaviour
 {
     public static PlayerHive Instance;
     public bool isMeleeInvulnerability;
+    public bool isJumpSmashInvulnerability;
 
     [SerializeField] HumanoidStatsSO stats;
 
     private void OnEnable()
     {
         Instance = this;
-    }
-
-    void Update()
-    {
-        
     }
 
     public IEnumerator MeleeAction()

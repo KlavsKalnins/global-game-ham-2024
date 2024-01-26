@@ -15,21 +15,26 @@ public class JumpSmashController : MonoBehaviour
 
     [SerializeField] MeleeUI meleeUI;
 
+    public static int jumpSmashDamage = 2;
+
+    private void OnEnable()
+    {
+        PlayerManager.OnPlayerIsGrounded += OnLanded;
+    }
+
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0) // Input.GetMouseButtonDown(0)
         {
+            PlayerHive.Instance.isJumpSmashInvulnerability = true;
             meleeUI.StartReload(cooldownTime);
             cooldownTimer = cooldownTime;
 
             Vector3 impulseVector = transform.forward;
             impulseVector += transform.up * forceUp;
 
-            StartCoroutine(PlayerHive.Instance.MeleeAction());
-
             rigidbody.AddForce(impulseVector * force, ForceMode.Impulse);
-            StartCoroutine(PlayerHive.Instance.MeleeAction());
             LeanTween.delayedCall(playDownForceAfterSeconds, AddDownForceToRigidbody);
         }
     }
@@ -39,5 +44,13 @@ public class JumpSmashController : MonoBehaviour
         Debug.Log("Down force");
         // Apply the down force to the Rigidbody in the downward direction
         rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
+    }
+
+    void OnLanded(bool state)
+    {
+        if (PlayerHive.Instance.isJumpSmashInvulnerability == true && state == true)
+        {
+            PlayerHive.Instance.isJumpSmashInvulnerability = false;
+        }
     }
 }

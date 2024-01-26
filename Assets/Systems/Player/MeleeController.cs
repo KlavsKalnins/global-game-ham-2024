@@ -11,6 +11,8 @@ public class MeleeController : MonoBehaviour
     [SerializeField] Rigidbody rigidbody;
 
     [SerializeField] MeleeUI meleeUI;
+    public static int meleeDashDamage = 1;
+
 
     void Update()
     {

@@ -5,11 +5,23 @@ using UnityEngine;
 public class PlayerGroundShadow : MonoBehaviour
 {
     [SerializeField] MeshRenderer shadowMeshRenderer;
+
+    private void OnEnable()
+    {
+        PlayerManager.OnPlayerIsGrounded += PlayerManagerJumped;
+    }
     void Update()
     {
+        if (!shadowMeshRenderer.enabled) return;
         var pos = PlayerManager.Instance.transform.position;
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
     }
+
+    void PlayerManagerJumped(bool isInAir)
+    {
+        ToggleShadow(!isInAir);
+    }
+
     public void ToggleShadow(bool toggle)
     {
         shadowMeshRenderer.enabled = toggle;
