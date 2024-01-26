@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 460073301}
   - component: {fileID: 460073302}
   m_Layer: 0
-  m_Name: WeaponController
+  m_Name: WeaponController - Test
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7716,7 +7716,7 @@ GameObject:
   - component: {fileID: 1331434489}
   - component: {fileID: 1331434490}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponBehavior
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8083,6 +8083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 957951456}
   weaponPanel: {fileID: 272621230}
+  weaponCanvasGroup: {fileID: 272621233}
 --- !u!4 &1859221222
 Transform:
   m_ObjectHideFlags: 0

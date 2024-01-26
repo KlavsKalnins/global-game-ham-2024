@@ -49,7 +49,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     {
         hasBeenStun = true;
         agent.enabled = false;
-        Debug.Log($"KK magnitude: {rigidbody.velocity.magnitude}");
+        // Debug.Log($"KK magnitude: {rigidbody.velocity.magnitude}");
         while (rigidbody.velocity.magnitude > 3f)
         {
             yield return new WaitForSeconds(1);
@@ -57,7 +57,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         yield return new WaitForSeconds(0.25f);
         Damage(PlayerHive.Instance.GetDamageAmount());
         yield return new WaitForSeconds(0.25f);
-        Debug.Log("WaitTillResetAgent");
+        // Debug.Log("WaitTillResetAgent");
         ResetAgent();
     }
 
@@ -77,6 +77,10 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Untagged"))
+        {
+            return;
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             return;
         }
