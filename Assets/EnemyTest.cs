@@ -45,7 +45,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         hasBeenStun = false;
     }
 
-    IEnumerator WaitTillResetAgent()
+    IEnumerator WaitTillResetAgent(bool takePlayerDamage = true)
     {
         hasBeenStun = true;
         agent.enabled = false;
@@ -67,6 +67,10 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         {
             StartCoroutine(WaitTillResetAgent());
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(WaitTillResetAgent(false));
         }
     }
 
