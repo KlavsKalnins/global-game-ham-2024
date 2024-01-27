@@ -25,7 +25,7 @@ public class MeleeController : MonoBehaviour
             Vector3 forwardVector = transform.forward;
 
             rigidbody.AddForce(forwardVector * force, ForceMode.Impulse);
-            PlayerManager.Instance.animatorUpperBody.SetBool("Melee", true);
+            PlayerManager.Instance.animatorUpperBody.SetTrigger("Sword");
             StartCoroutine(PlayerHive.Instance.MeleeAction());
         }
     }
