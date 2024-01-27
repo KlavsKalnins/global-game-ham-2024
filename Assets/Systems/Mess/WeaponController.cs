@@ -1,61 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] TMP_Text debugWeapons;
+    // [SerializeField] TMP_Text debugWeapons;
     [SerializeField] List<WeaponBehavior> weapons;
-    //[SerializeField] List<WeaponUI> weaponsUI; // var WeaponUI
+    [SerializeField] WeaponBehavior rangeWeapon;
     [SerializeField] bool isShooting;
     private List<Coroutine> shootCoroutines = new List<Coroutine>();
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] float particleWaitTillRun = 0.2f;
 
-    [SerializeField] AudioSource shootAudioSource;
-    [SerializeField] float shootAudioDelay = 0f;
+    /*[SerializeField] AudioSource shootAudioSource;
+    [SerializeField] float shootAudioDelay = 0f;*/
     void Start()
     {
-        debugWeapons.text = "";
+        /*debugWeapons.text = "";
         weapons.ForEach(w =>
         {
             debugWeapons.text += $"Weapon:{w.name} Reload:{w.isReloading} ammo:{w.ammoAmount} clip:{w.clipSize} chamber:{w.ammoInChaimber}\n";
-        });
+        });*/
     }
+
+    void PlayParticle()
+    {
+        if (rangeWeapon.isReloading) return;
+        LeanTween.delayedCall(particleWaitTillRun, () =>
+        {
+            if (particle != null)
+            {
+                particle.Play();
+            }
+        });
+    } 
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             isShooting = true;
+            PlayParticle();
         }
         else if (Input.GetMouseButton(0))
         {
+            PlayParticle();
             return;
         }
         else
         {
             isShooting = false;
+            // shootAudioSource.Stop();
         }
+        
 
-        if (isShooting)
+        if (isShooting && !rangeWeapon.isReloading)
         {
-            LeanTween.delayedCall(particleWaitTillRun, () =>
-            {
-                if (particle != null)
-                {
-                    particle.Play();
-                }
-            });
-            LeanTween.delayedCall(shootAudioDelay, () =>
+            
+            /*LeanTween.delayedCall(shootAudioDelay, () =>
             {
                 if (shootAudioSource != null)
                 {
                     shootAudioSource.Play();
                 }
-            });
+            });*/
             ShootWeapons();
         }
         else
@@ -66,14 +75,18 @@ public class WeaponController : MonoBehaviour
 
     void ShootWeapons()
     {
+        PlayParticle();
         PlayerManager.Instance.animatorUpperBody.SetBool("Shoot", true);
-        debugWeapons.text = "";
-        weapons.ForEach(w =>
+
+        Coroutine coroutine = StartCoroutine(rangeWeapon.Shoot());
+        shootCoroutines.Add(coroutine);
+
+        /*weapons.ForEach(w =>
         {
             Coroutine coroutine = StartCoroutine(w.Shoot());
             shootCoroutines.Add(coroutine);
             debugWeapons.text += $"{w.name} Reload:{w.isReloading} ammo:{w.ammoAmount} clip:{w.clipSize} chamber:{w.ammoInChaimber}\n";
-        });
+        });*/
     }
 
     void StopShootCoroutines()

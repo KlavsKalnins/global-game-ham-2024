@@ -13,6 +13,9 @@ public class PlayerHive : MonoBehaviour
     {
         Instance = this;
         stats.Health = 3;
+    }
+    private void Start()
+    {
         PlayerHealthUI.Instance.UpdateHealth(stats.Health);
     }
 
