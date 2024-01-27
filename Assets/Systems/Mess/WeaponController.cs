@@ -10,6 +10,9 @@ public class WeaponController : MonoBehaviour
     //[SerializeField] List<WeaponUI> weaponsUI; // var WeaponUI
     [SerializeField] bool isShooting;
     private List<Coroutine> shootCoroutines = new List<Coroutine>();
+
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] float particleWaitTillRun = 0.2f;
     void Start()
     {
         debugWeapons.text = "";
@@ -36,6 +39,13 @@ public class WeaponController : MonoBehaviour
 
         if (isShooting)
         {
+            LeanTween.delayedCall(particleWaitTillRun, () =>
+            {
+                if (particle != null)
+                {
+                    particle.Play();
+                }
+            });
             ShootWeapons();
         }
         else
