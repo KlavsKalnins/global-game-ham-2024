@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class EnemyTest : MonoBehaviour, IHealthBehavior
 {
+    public static int aliveCount;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] Rigidbody rigidbody;
@@ -14,6 +15,15 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     [SerializeField] int health;
 
     private bool IsAttackingPlayer;
+
+    private void OnEnable()
+    {
+        aliveCount++;
+    }
+    private void OnDisable()
+    {
+        aliveCount--;
+    }
 
     void Start()
     {
