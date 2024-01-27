@@ -13,6 +13,7 @@ public class WeaponBehavior : MonoBehaviour
     public int reloadSeconds;
     public bool isReloading;
     public float range;
+    public float bulletAutoExplodeTimer = 2f;
 
     [SerializeField] BulletBehavior bulletPrefab;
     public WeaponUI weaponUiPrefab;
@@ -20,7 +21,7 @@ public class WeaponBehavior : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, range);
+        // Gizmos.DrawWireSphere(transform.position, range);
     }
     private void Start()
     {
@@ -48,7 +49,7 @@ public class WeaponBehavior : MonoBehaviour
                 weaponUiReference.UpdateAmmoText($"{ammoInChaimber}/{clipSize} : {ammoAmount}");
                 var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-                StartCoroutine(bullet.DeathTimer(range));
+                StartCoroutine(bullet.DeathTimer(bulletAutoExplodeTimer));
                 bulletRb.AddForce(transform.forward * 50, ForceMode.Impulse);
                 Debug.Log($"KK: spawned bullet");
                 if (ammoInChaimber == 0)

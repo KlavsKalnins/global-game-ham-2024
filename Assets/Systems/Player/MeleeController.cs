@@ -13,11 +13,12 @@ public class MeleeController : MonoBehaviour
     [SerializeField] MeleeUI meleeUI;
     public static int meleeDashDamage = 1;
 
-
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] float particleWaitTillRun = 0.2f;
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
+        if (Input.GetMouseButtonDown(1) && cooldownTimer <= 0)
         {
             meleeUI.StartReload(cooldownTime);
             cooldownTimer = cooldownTime;
@@ -26,6 +27,13 @@ public class MeleeController : MonoBehaviour
 
             rigidbody.AddForce(forwardVector * force, ForceMode.Impulse);
             PlayerManager.Instance.animatorUpperBody.SetTrigger("Sword");
+            LeanTween.delayedCall(particleWaitTillRun, () =>
+            {
+                if (particle != null)
+                {
+                    particle.Play();
+                }
+            });
             StartCoroutine(PlayerHive.Instance.MeleeAction());
         }
     }
