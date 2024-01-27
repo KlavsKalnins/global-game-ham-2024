@@ -2274,7 +2274,7 @@ MonoBehaviour:
   audioSources:
   - {fileID: 729389119}
   - {fileID: 729389118}
-  customWait: 100000
+  customWait: 16
 --- !u!4 &729389117
 Transform:
   m_ObjectHideFlags: 0
@@ -2396,7 +2396,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 214b17891e7ebe843b44f4ebd7c2928c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7566cbb802a4b57409505d579afb3dd5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9606,7 +9606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dded79ce781c34cb02d471974639d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 3
+  cooldownTime: 40
   cooldownTimer: 0
   force: 10
   forceUp: 10
@@ -9626,7 +9626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019585c588c4ad349bf2c83fffbac61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 2
+  cooldownTime: 20
   cooldownTimer: 0
   force: 100
   rigidbody: {fileID: 1458405957}
