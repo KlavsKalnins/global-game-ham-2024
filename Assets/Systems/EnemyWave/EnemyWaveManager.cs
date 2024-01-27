@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemyWaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // [SerializeField] Enemy
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
