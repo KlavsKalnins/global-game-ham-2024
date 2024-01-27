@@ -27,4 +27,14 @@ public class PlayerHive : MonoBehaviour
     {
         return stats.Damage;
     }
+
+    public void TakeDamage(int value)
+    {
+        stats.Health -= value;
+        if (stats.Health <= 0)
+        {
+            Destroy(gameObject);
+            // SceneManager.LoadScene(0);
+        }
+    }
 }

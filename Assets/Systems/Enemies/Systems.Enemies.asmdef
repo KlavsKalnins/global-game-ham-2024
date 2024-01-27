@@ -1,0 +1,19 @@
+{
+    "name": "Systems.Enemies",
+    "rootNamespace": "",
+    "references": [
+        "GUID:571cf1524ac2e9d46b7d390754f15b3b",
+        "GUID:a075a0d8153859d4aae367a8ef5f3489",
+        "GUID:cd09bbf8eab1f1c4ea6d6a638766eb3b",
+        "GUID:554ba94755c9d3b44be21cc3601d145c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
