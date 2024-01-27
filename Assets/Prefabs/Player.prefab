@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019585c588c4ad349bf2c83fffbac61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 4.77
+  cooldownTime: 1
   cooldownTimer: 0
   force: 0
   rigidbody: {fileID: 7281635443671870024}
