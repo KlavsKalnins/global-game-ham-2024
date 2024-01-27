@@ -32,15 +32,12 @@ public class PlayerHealthUI : MonoBehaviour
         {
             for (int i = 0; i < playerHealthPoints.Count; i++)
             {
-                Debug.Log($"KK: {playerHealth} {i}");
                 if (playerHealth > i)
                 {
-                    Debug.Log($"KK: true {i}");
                     playerHealthPoints[i].UpdateVisual(true);
                 }
                 else
                 {
-                    Debug.Log($"KK: false {i}");
                     playerHealthPoints[i].UpdateVisual(false);
                 }
             }

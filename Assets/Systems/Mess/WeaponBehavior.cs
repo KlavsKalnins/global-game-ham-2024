@@ -47,10 +47,33 @@ public class WeaponBehavior : MonoBehaviour
                 // spawn bullet
                 ammoInChaimber -= 1;
                 weaponUiReference.UpdateAmmoText($"{ammoInChaimber}/{clipSize} : {ammoAmount}");
-                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-                StartCoroutine(bullet.DeathTimer(bulletAutoExplodeTimer));
-                bulletRb.AddForce(transform.forward * 50, ForceMode.Impulse);
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    // Spawn bullet at player position
+                    var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+                    StartCoroutine(bullet.DeathTimer(bulletAutoExplodeTimer));
+
+                    // Calculate direction towards the mouse position
+                    Vector3 direction = (hit.point - transform.position).normalized;
+
+                    // Apply force towards the mouse position
+                    bulletRb.AddForce(direction * 50, ForceMode.Impulse);
+
+                    // 20% to miss deblw code
+                } 
+                else
+                {
+                    var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+                    StartCoroutine(bullet.DeathTimer(bulletAutoExplodeTimer));
+                    bulletRb.AddForce(transform.forward * 50, ForceMode.Impulse);
+                }
+
                 // Debug.Log($"KK: spawned bullet");
                 if (ammoInChaimber == 0)
                 {
