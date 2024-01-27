@@ -3,7 +3,12 @@ guid: f7e515706febd5248b93baae69c642f6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sARKANA gAISMA
+    second: {fileID: 2100000, guid: 05c682ecf3b770140a80338c6ee5a932, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
