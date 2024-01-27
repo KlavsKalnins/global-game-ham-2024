@@ -78,6 +78,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log($"KK: BULLET");
             Damage(PlayerHive.Instance.GetDamageAmount(), true);
             StartCoroutine(WaitTillResetAgent());
             Destroy(collision.gameObject);
