@@ -13,7 +13,7 @@ public class MeleeController : MonoBehaviour
     [SerializeField] MeleeUI meleeUI;
     public static int meleeDashDamage = 1;
 
-
+    [SerializeField] ParticleSystem particle;
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
@@ -26,6 +26,10 @@ public class MeleeController : MonoBehaviour
 
             rigidbody.AddForce(forwardVector * force, ForceMode.Impulse);
             PlayerManager.Instance.animatorUpperBody.SetTrigger("Sword");
+            if (particle != null)
+            {
+                particle.Play();
+            }
             StartCoroutine(PlayerHive.Instance.MeleeAction());
         }
     }
