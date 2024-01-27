@@ -59,23 +59,28 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         // Debug.Log($"KK magnitude: {rigidbody.velocity.magnitude}");
         while (rigidbody.velocity.magnitude > 3f)
         {
+            Debug.Log($"KK: {countTries} {rigidbody.velocity.magnitude}");
             countTries += 1;
-            if (countTries == 5)
+            if (countTries == 2)
             {
                 break;
             }
             yield return new WaitForSeconds(1);
         }
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
         if (takePlayerDamage)
         {
             Damage(PlayerHive.Instance.GetDamageAmount(), true);
         }
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
         FinishDamage();
         yield return new WaitForSeconds(0.05f);
         // Debug.Log("WaitTillResetAgent");
         ResetAgent();
+        yield return new WaitForSeconds(0.02f);
+        agent.enabled = false;
+        yield return new WaitForSeconds(0.02f);
+        agent.enabled = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -122,13 +127,18 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         }
     }
 
-    public void Damage(int damage, bool finishInstantly = false)
+    public void Damage(int damage, bool finishInstantly = false, bool? shouldCallStun = null)
     {
         Debug.Log($"DAMAGE ENEMY {health} - {damage} = {health - damage}");
         health -= damage;
         if (finishInstantly)
         {
             FinishDamage();
+        }
+        if (shouldCallStun.HasValue && shouldCallStun.Value == true)
+        {
+            // already took damage from Inferface from other side
+            StartCoroutine(WaitTillResetAgent(false));
         }
     }
 

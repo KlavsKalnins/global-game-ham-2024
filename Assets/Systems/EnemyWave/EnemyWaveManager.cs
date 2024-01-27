@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyWaveManager : MonoBehaviour
 {
-    // [SerializeField] Enemy
+    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] Light[] spawnPointLights;
+    public int waveIndex = 0;
+
     void Start()
     {
         
@@ -13,5 +16,18 @@ public class EnemyWaveManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StartDemoWave()
+    {
+        for (int i = 0; i < spawnPointLights.Length; i++)
+        {
+            spawnPointLights[i].enabled = true;
+        }
+    }
+
+    IEnumerator CheckProgress()
+    {
+        yield return new WaitForSeconds(1.0f);
     }
 }
