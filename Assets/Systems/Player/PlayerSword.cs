@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 public class PlayerSword : MonoBehaviour
 {
     [SerializeField] float knockbackForce = 5f;
     [SerializeField] float knockbackAngleOffset = 45f;
+    [SerializeField] BoxCollider swordCollider;
+
+    public void ToggleColliderState(bool state)
+    {
+        if (swordCollider != null)
+        {
+            swordCollider.enabled = state;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -14,6 +23,11 @@ public class PlayerSword : MonoBehaviour
             other.GetComponent<IHealthBehavior>().Damage(1, false, true);
             Debug.Log("collided with enemy");
             Knockback(other);
+        }
+
+        if (other.gameObject.CompareTag("Enemyy"))
+        {
+            other.GetComponent<IDamagable>().TakeDamage(1);
         }
     }
 

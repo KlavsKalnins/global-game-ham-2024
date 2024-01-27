@@ -17,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
     [SerializeField] bool hasBeenStun;
     [SerializeField] float attackDistance = 1.5f;
     [SerializeField] float attackTime = 1f;
+    [SerializeField] bool canTakeDamage = true;
+    [SerializeField] float immortalSeconds = 0.2f;
 
     private void OnEnable()
     {
@@ -86,11 +88,18 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        stats.Damage -= damage;
+        if (!canTakeDamage) return;
+        canTakeDamage = false;
+        stats.Health -= damage;
 
-        if (stats.Damage <= 0)
+        if (stats.Health <= 0)
         {
             Destroy(gameObject);
         }
+
+        LeanTween.delayedCall(immortalSeconds, () =>
+        {
+            canTakeDamage = true;
+        });
     }
 }

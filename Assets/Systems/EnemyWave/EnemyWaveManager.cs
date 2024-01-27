@@ -17,7 +17,7 @@ public class EnemyWaveManager : MonoBehaviour
 {
     [SerializeField] WaveDoorType waveDoorType;
     [SerializeField] Transform[] spawnPoints;
-    [SerializeField] EnemyTest[] enemyPrefabs;
+    [SerializeField] EnemyBehavior[] enemyPrefabs;
 
     public int waveIndex = 0;
     public static Action<int, WaveDoorType> OnNextWave;
@@ -58,6 +58,7 @@ public class EnemyWaveManager : MonoBehaviour
             {
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
                 Instantiate(currentWave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+                // TODO: if currentWave.enemyPrefab == null then  rand enemyPrefabs
                 yield return new WaitForSeconds(1.3f);
             }
 
