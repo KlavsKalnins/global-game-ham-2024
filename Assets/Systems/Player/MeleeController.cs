@@ -15,6 +15,9 @@ public class MeleeController : MonoBehaviour
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] float particleWaitTillRun = 0.2f;
+
+    [SerializeField] AudioSource meleeAudioSource;
+    [SerializeField] float meleeAudioDelay = 0f;
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
@@ -32,6 +35,13 @@ public class MeleeController : MonoBehaviour
                 if (particle != null)
                 {
                     particle.Play();
+                }
+            });
+            LeanTween.delayedCall(meleeAudioDelay, () =>
+            {
+                if (meleeAudioSource != null)
+                {
+                    meleeAudioSource.Play();
                 }
             });
             StartCoroutine(PlayerHive.Instance.MeleeAction());

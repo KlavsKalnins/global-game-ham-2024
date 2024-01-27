@@ -13,6 +13,9 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField] ParticleSystem particle;
     [SerializeField] float particleWaitTillRun = 0.2f;
+
+    [SerializeField] AudioSource shootAudioSource;
+    [SerializeField] float shootAudioDelay = 0f;
     void Start()
     {
         debugWeapons.text = "";
@@ -44,6 +47,13 @@ public class WeaponController : MonoBehaviour
                 if (particle != null)
                 {
                     particle.Play();
+                }
+            });
+            LeanTween.delayedCall(shootAudioDelay, () =>
+            {
+                if (shootAudioSource != null)
+                {
+                    shootAudioSource.Play();
                 }
             });
             ShootWeapons();

@@ -17,7 +17,6 @@ public class EnemyWaveManager : MonoBehaviour
 {
     [SerializeField] WaveDoorType waveDoorType;
     [SerializeField] Transform[] spawnPoints;
-    [SerializeField] Light[] spawnPointLights;
     [SerializeField] EnemyTest[] enemyPrefabs;
 
     public int waveIndex = 0;
@@ -42,10 +41,6 @@ public class EnemyWaveManager : MonoBehaviour
 
     public void StartDemoWave()
     {
-        for (int i = 0; i < spawnPointLights.Length; i++)
-        {
-            spawnPointLights[i].enabled = true;
-        }
         StartCoroutine(StartNextWave());
     }
 
