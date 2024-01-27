@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.809999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
         type: 3}
@@ -634,6 +634,9 @@ MonoBehaviour:
   attackTime: 3
   canTakeDamage: 1
   immortalSeconds: 0.2
+  droppablePrefab: {fileID: 7158112713978961946, guid: 4ccabb9030a619d4f95fc2b7f04b3c7d,
+    type: 3}
+  droppableChance: 0.2
 --- !u!195 &2706488874303720347
 NavMeshAgent:
   m_ObjectHideFlags: 0

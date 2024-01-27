@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerHive : MonoBehaviour
+public class PlayerHive : MonoBehaviour, IDamagable
 {
     public static PlayerHive Instance;
     public bool isMeleeInvulnerability;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +20,9 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
     [SerializeField] float attackTime = 1f;
     [SerializeField] bool canTakeDamage = true;
     [SerializeField] float immortalSeconds = 0.2f;
+
+    [SerializeField] GameObject droppablePrefab;
+    [SerializeField] float droppableChance = 0.2f;
 
     private void OnEnable()
     {
@@ -94,6 +98,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
 
         if (stats.Health <= 0)
         {
+            Droppable();
             Destroy(gameObject);
         }
 
@@ -101,5 +106,13 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         {
             canTakeDamage = true;
         });
+    }
+
+    void Droppable()
+    {
+        if (UnityEngine.Random.Range(0f, 1f) <= droppableChance)
+        {
+            Instantiate(droppablePrefab, transform.position, Quaternion.identity);
+        }
     }
 }
