@@ -31,7 +31,7 @@ public class HudManager : MonoBehaviour
     {
         var weaponReferenceUI = Instantiate(weapon.weaponUiPrefab, weaponPanel.transform.position, Quaternion.identity);
         weapon.weaponUiReference = weaponReferenceUI;
-        weapon.weaponUiReference.Init(weapon.name, $"{weapon.ammoInChaimber}/{weapon.clipSize} : {weapon.ammoAmount}");
+        weapon.weaponUiReference.Init(weapon.weaponName, $"{weapon.ammoInChaimber}/{weapon.clipSize} : {weapon.ammoAmount}");
         weapon.weaponUiReference.transform.SetParent(weaponPanel.transform, false);
     }
 

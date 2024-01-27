@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class WeaponUI : MonoBehaviour
 {
-    [SerializeField] TMP_Text name;
+    [SerializeField] TMP_Text weaponName;
     [SerializeField] Image reloadingImage;
     [SerializeField] TMP_Text ammoText;
 
     public void Init(string name, string ammoText)
     {
-        this.name.text = name;
+        if (weaponName != null)
+        {
+            this.weaponName.text = name;
+        }
         this.ammoText.text = ammoText;
     }
 
