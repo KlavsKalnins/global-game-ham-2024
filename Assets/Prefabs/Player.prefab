@@ -130,6 +130,8 @@ MonoBehaviour:
   isShooting: 0
   particle: {fileID: 6275408597241708844}
   particleWaitTillRun: 0.05
+  shootAudioSource: {fileID: 0}
+  shootAudioDelay: 0
 --- !u!114 &1177123533873344135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,13 +820,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019585c588c4ad349bf2c83fffbac61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
+  cooldownTime: 4.77
   cooldownTimer: 0
   force: 0
   rigidbody: {fileID: 7281635443671870024}
   meleeUI: {fileID: 0}
   particle: {fileID: 8118439162526485089}
   particleWaitTillRun: 0.35
+  meleeAudioSource: {fileID: 0}
+  meleeAudioDelay: 0
 --- !u!114 &719359344490793458
 MonoBehaviour:
   m_ObjectHideFlags: 0
