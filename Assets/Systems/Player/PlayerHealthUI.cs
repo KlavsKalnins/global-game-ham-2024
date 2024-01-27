@@ -6,14 +6,13 @@ public class PlayerHealthUI : MonoBehaviour
 {
     public static PlayerHealthUI Instance;
     [SerializeField] List<PlayerHealthPointUI> playerHealthPoints = new List<PlayerHealthPointUI>();
-    [SerializeField] int health = 3;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    void Update()
+/*    void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -25,7 +24,7 @@ public class PlayerHealthUI : MonoBehaviour
             health += 1;
             UpdateHealth(health);
         }
-    }
+    }*/
 
     public void UpdateHealth(int playerHealth)
     {

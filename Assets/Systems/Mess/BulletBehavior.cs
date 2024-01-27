@@ -7,6 +7,7 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField] Transform target; 
     [SerializeField] AnimationCurve arc;
     public float speed;
+    public int damage = 1;
 
     void Update()
     {
@@ -20,6 +21,14 @@ public class BulletBehavior : MonoBehaviour
         if (this != null)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemyy"))
+        {
+            Debug.Log("ahujjjeeeenn");
+            other.GetComponent<IDamagable>().TakeDamage(damage);
         }
     }
 }

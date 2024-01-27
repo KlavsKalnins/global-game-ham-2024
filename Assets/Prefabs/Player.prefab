@@ -758,10 +758,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.003, y: 0.01, z: 0.03}
-  m_Center: {x: 0, y: -0.001, z: 0.01}
+  m_Center: {x: 0, y: -0.001, z: 0.015}
 --- !u!114 &2056321884253673608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackForce: 8
   knockbackAngleOffset: 100
+  swordCollider: {fileID: 111423100297847782}
 --- !u!4 &2407109178827157127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7e515706febd5248b93baae69c642f6,
@@ -829,6 +830,7 @@ MonoBehaviour:
   particleWaitTillRun: 0.35
   meleeAudioSource: {fileID: 0}
   meleeAudioDelay: 0
+  sword: {fileID: 2056321884253673608}
 --- !u!114 &719359344490793458
 MonoBehaviour:
   m_ObjectHideFlags: 0

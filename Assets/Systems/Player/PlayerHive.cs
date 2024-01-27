@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHive : MonoBehaviour
@@ -13,6 +12,8 @@ public class PlayerHive : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
+        stats.Health = 3;
+        PlayerHealthUI.Instance.UpdateHealth(stats.Health);
     }
 
     public IEnumerator MeleeAction()
@@ -20,17 +21,22 @@ public class PlayerHive : MonoBehaviour
         isMeleeInvulnerability = true;
         yield return new WaitForSeconds(0.75f);
         isMeleeInvulnerability = false;
-        Debug.Log("END isMeleeInvulnerability");
+        // Debug.Log("END isMeleeInvulnerability");
     }
 
     public int GetDamageAmount()
     {
         return stats.Damage;
     }
+    public int GetHealthAmount()
+    {
+        return stats.Health;
+    }
 
     public void TakeDamage(int value)
     {
         stats.Health -= value;
+        PlayerHealthUI.Instance.UpdateHealth(stats.Health);
         if (stats.Health <= 0)
         {
             Destroy(gameObject);

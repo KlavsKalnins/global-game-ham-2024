@@ -51,7 +51,7 @@ public class WeaponBehavior : MonoBehaviour
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 StartCoroutine(bullet.DeathTimer(bulletAutoExplodeTimer));
                 bulletRb.AddForce(transform.forward * 50, ForceMode.Impulse);
-                Debug.Log($"KK: spawned bullet");
+                // Debug.Log($"KK: spawned bullet");
                 if (ammoInChaimber == 0)
                 {
                     StartReloading();
