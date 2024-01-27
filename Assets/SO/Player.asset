@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   Name: Ivan
-  Health: 10
+  Health: 40
   Damage: 1
   Dodge: 0
   WalkingSpeed: 5

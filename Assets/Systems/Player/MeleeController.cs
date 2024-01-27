@@ -18,6 +18,8 @@ public class MeleeController : MonoBehaviour
 
     [SerializeField] AudioSource meleeAudioSource;
     [SerializeField] float meleeAudioDelay = 0f;
+
+    [SerializeField] PlayerSword sword;
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
@@ -30,6 +32,7 @@ public class MeleeController : MonoBehaviour
 
             rigidbody.AddForce(forwardVector * force, ForceMode.Impulse);
             PlayerManager.Instance.animatorUpperBody.SetTrigger("Sword");
+            // sword.ToggleColliderState(true);
             LeanTween.delayedCall(particleWaitTillRun, () =>
             {
                 if (particle != null)
@@ -46,6 +49,16 @@ public class MeleeController : MonoBehaviour
             });
             StartCoroutine(PlayerHive.Instance.MeleeAction());
         }
+    }
+
+    public void MeleeAttackStart()
+    {
+        sword.ToggleColliderState(true);
+    }
+
+    public void MeleeAttackEnd()
+    {
+        sword.ToggleColliderState(false);
     }
 }
 

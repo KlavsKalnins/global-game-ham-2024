@@ -7,6 +7,6 @@ public class WaveSO : ScriptableObject
 {
     public float startDelay = 2.0f;
     public float timeBetweenEnemies = 1.0f;
-    public EnemyTest enemyPrefab;
+    public EnemyBehavior enemyPrefab;
     public int enemyCounts;
 }
