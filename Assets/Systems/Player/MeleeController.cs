@@ -14,6 +14,7 @@ public class MeleeController : MonoBehaviour
     public static int meleeDashDamage = 1;
 
     [SerializeField] ParticleSystem particle;
+    [SerializeField] float particleWaitTillRun = 0.2f;
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
@@ -26,10 +27,13 @@ public class MeleeController : MonoBehaviour
 
             rigidbody.AddForce(forwardVector * force, ForceMode.Impulse);
             PlayerManager.Instance.animatorUpperBody.SetTrigger("Sword");
-            if (particle != null)
+            LeanTween.delayedCall(particleWaitTillRun, () =>
             {
-                particle.Play();
-            }
+                if (particle != null)
+                {
+                    particle.Play();
+                }
+            });
             StartCoroutine(PlayerHive.Instance.MeleeAction());
         }
     }
