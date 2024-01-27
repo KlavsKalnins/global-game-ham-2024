@@ -18,7 +18,7 @@ public class MeleeController : MonoBehaviour
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
+        if (Input.GetMouseButtonDown(1) && cooldownTimer <= 0)
         {
             meleeUI.StartReload(cooldownTime);
             cooldownTimer = cooldownTime;

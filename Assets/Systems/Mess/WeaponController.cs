@@ -24,11 +24,11 @@ public class WeaponController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             isShooting = true;
         }
-        else if (Input.GetMouseButton(1))
+        else if (Input.GetMouseButton(0))
         {
             return;
         }
