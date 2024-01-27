@@ -241,6 +241,69 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &14587961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14587963}
+  - component: {fileID: 14587962}
+  m_Layer: 0
+  m_Name: '[EnemyWaveManager] - Left Door'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &14587962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14587961}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f92a6c5a9f123f4ab695e52ade1ebd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDoorType: 1
+  spawnPoints:
+  - {fileID: 2003770373}
+  spawnPointLights:
+  - {fileID: 822476901}
+  - {fileID: 6029365}
+  - {fileID: 483041399}
+  - {fileID: 659877740}
+  - {fileID: 640871219}
+  enemyPrefabs:
+  - {fileID: 3262191307456086144, guid: d29aceeea0de38d4ab9ac6a4187451fe, type: 3}
+  waveIndex: 0
+  waves:
+  - {fileID: 11400000, guid: fa3809d76f85f31478bd1a6f6a33da5f, type: 2}
+  - {fileID: 11400000, guid: b53ed55f5566f694e98467681741499a, type: 2}
+  - {fileID: 11400000, guid: 00f59c6f733bca047bad8dce4545a60b, type: 2}
+  - {fileID: 11400000, guid: c2750bc7cd1a4024eb2f695fc518f1d6, type: 2}
+  - {fileID: 11400000, guid: d4a23ca9aafc4554d8f0175954ff2bad, type: 2}
+  - {fileID: 11400000, guid: 9481fb4b90f9e964d8c3105a7b53d069, type: 2}
+--- !u!4 &14587963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14587961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &72259396
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +1030,7 @@ GameObject:
   - component: {fileID: 709312723}
   - component: {fileID: 709312722}
   m_Layer: 0
-  m_Name: '[EnemyWaveManager]'
+  m_Name: '[EnemyWaveManager] - Main Door'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,30 +1043,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709312721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f92a6c5a9f123f4ab695e52ade1ebd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveDoorType: 0
   spawnPoints:
   - {fileID: 836429480}
-  - {fileID: 1020428600}
-  - {fileID: 2003770373}
-  - {fileID: 715460452}
-  - {fileID: 1269571244}
   spawnPointLights:
   - {fileID: 822476901}
   - {fileID: 6029365}
   - {fileID: 483041399}
   - {fileID: 659877740}
   - {fileID: 640871219}
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 3262191307456086144, guid: d29aceeea0de38d4ab9ac6a4187451fe, type: 3}
   waveIndex: 0
   waves:
-  - startDelay: 1
-    timeBetweenEnemies: 0
-    enemyPrefab: {fileID: 0}
-    enemyCounts: 
+  - {fileID: 11400000, guid: 844827cc08b8c6d488c2b8a64f6b94d5, type: 2}
+  - {fileID: 11400000, guid: 17d989dac0f459840a58c7c68dadbcbe, type: 2}
+  - {fileID: 11400000, guid: f9a8e0396736d244aa4883058ec8f710, type: 2}
+  - {fileID: 11400000, guid: e8f898835a3d3424996d306a86f397ea, type: 2}
+  - {fileID: 11400000, guid: 72bd817930ccda54088f3b6e01ba6ac7, type: 2}
+  - {fileID: 11400000, guid: 68d8aedbd7d0a304fb97fb6c6f7ed53f, type: 2}
+  - {fileID: 11400000, guid: 258e4e17f9664c84db251f731f92d024, type: 2}
 --- !u!4 &709312723
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,7 +1094,7 @@ GameObject:
   - component: {fileID: 715460452}
   - component: {fileID: 715460453}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Enemy Spawner - Right Door
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1180,6 +1244,55 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786674348}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &807275351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 807275353}
+  - component: {fileID: 807275352}
+  m_Layer: 0
+  m_Name: '[EnemyRoundManager]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &807275352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807275351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a1bedea6f331c4b9e8e7c8cd0a33c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftDoorOpensAfterMainDoorWaveCount: 3
+  rightDoorOpensAfterMainDoorWaveCount: 5
+  mainDoorWave: {fileID: 709312722}
+  leftDoorWave: {fileID: 14587962}
+  rightDoorWave: {fileID: 904676208}
+--- !u!4 &807275353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807275351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -6184,7 +6297,7 @@ GameObject:
   - component: {fileID: 836429480}
   - component: {fileID: 836429481}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Enemy Spawner - Main Door
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6219,6 +6332,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3262191307456086144, guid: d29aceeea0de38d4ab9ac6a4187451fe, type: 3}
   spawnedEnemy: {fileID: 0}
+--- !u!1 &904676207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904676209}
+  - component: {fileID: 904676208}
+  m_Layer: 0
+  m_Name: '[EnemyWaveManager] - Right Door'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &904676208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904676207}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f92a6c5a9f123f4ab695e52ade1ebd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDoorType: 2
+  spawnPoints:
+  - {fileID: 715460452}
+  spawnPointLights:
+  - {fileID: 822476901}
+  - {fileID: 6029365}
+  - {fileID: 483041399}
+  - {fileID: 659877740}
+  - {fileID: 640871219}
+  enemyPrefabs:
+  - {fileID: 3262191307456086144, guid: d29aceeea0de38d4ab9ac6a4187451fe, type: 3}
+  waveIndex: 0
+  waves:
+  - {fileID: 11400000, guid: 34af254340de5654586ee5107c78d6a6, type: 2}
+  - {fileID: 11400000, guid: 57638d12a512a9945ac17e80035e1fe8, type: 2}
+  - {fileID: 11400000, guid: 8ca7f2f6d1339eb4883d3c6af8e30b42, type: 2}
+  - {fileID: 11400000, guid: 452323595b0a8244fbb3ebd770aad4b2, type: 2}
+  - {fileID: 11400000, guid: f643eae4a2da44c44a00515307a109af, type: 2}
+  - {fileID: 11400000, guid: f22dbe2164a125649866a0bf3d5ab0dd, type: 2}
+  - {fileID: 11400000, guid: e0252ddb7cafaef4e9f593b4188e3514, type: 2}
+--- !u!4 &904676209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904676207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &909526416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6710,7 +6887,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1119142806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7073,7 +7250,7 @@ GameObject:
   - component: {fileID: 2003770373}
   - component: {fileID: 2003770374}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Enemy Spawner - Left Door
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7570,7 +7747,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 955268392}
+  - {fileID: 807275353}
   - {fileID: 709312723}
+  - {fileID: 14587963}
+  - {fileID: 904676209}
   - {fileID: 72259398}
   - {fileID: 836429480}
   - {fileID: 1020428600}

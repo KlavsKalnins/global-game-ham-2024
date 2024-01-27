@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyTest : MonoBehaviour, IHealthBehavior
 {
     public static int aliveCount;
+    public static Action NoEnemiesAreAlive;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] Rigidbody rigidbody;
@@ -23,6 +25,10 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
     private void OnDisable()
     {
         aliveCount--;
+        if (aliveCount == 0)
+        {
+            NoEnemiesAreAlive?.Invoke();
+        }
     }
 
     void Start()
@@ -69,7 +75,7 @@ public class EnemyTest : MonoBehaviour, IHealthBehavior
         // Debug.Log($"KK magnitude: {rigidbody.velocity.magnitude}");
         while (rigidbody.velocity.magnitude > 3f)
         {
-            Debug.Log($"KK: {countTries} {rigidbody.velocity.magnitude}");
+            //Debug.Log($"KK: {countTries} {rigidbody.velocity.magnitude}");
             countTries += 1;
             if (countTries == 2)
             {

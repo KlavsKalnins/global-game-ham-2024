@@ -1,28 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
+
+[System.Serializable] 
+public enum WaveDoorType
+{
+    Main,
+    Left,
+    Right,
+}
 
 public class EnemyWaveManager : MonoBehaviour
 {
+    [SerializeField] WaveDoorType waveDoorType;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] Light[] spawnPointLights;
     [SerializeField] EnemyTest[] enemyPrefabs;
 
     public int waveIndex = 0;
-    public Wave[] waves;
+    public static Action<int, WaveDoorType> OnNextWave;
+    public WaveSO[] waves;
 
-    void Start()
+    public bool isAllWaveCompleted;
+
+    private void OnEnable()
     {
+        EnemyTest.NoEnemiesAreAlive += CheckIfDemoWaveCompleted;
         StartDemoWave();
     }
 
-    void Update()
+    void CheckIfDemoWaveCompleted()
     {
-        
-        if (AllEnemiesKilled()) // change to static int
-        { 
-            // Start the next wave
-            StartCoroutine(StartNextWave());
+        if (isAllWaveCompleted)
+        {
+            Debug.LogWarning("GAROJEM SLAVA");
         }
     }
 
@@ -32,53 +46,41 @@ public class EnemyWaveManager : MonoBehaviour
         {
             spawnPointLights[i].enabled = true;
         }
+        StartCoroutine(StartNextWave());
     }
 
-    bool AllEnemiesKilled()
-    {
-        // Check if all enemies in the current wave are killed
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        return enemies.Length == 0;
-    }
 
     IEnumerator StartNextWave()
     {
-        if (waveIndex < waves.Length)
+        while (waveIndex < waves.Length)
         {
-            Wave currentWave = waves[waveIndex];
+            WaveSO currentWave = waves[waveIndex];
             yield return new WaitForSeconds(currentWave.startDelay);
 
-            for (int i = 0; i < currentWave.enemyCounts.Length; i++)
+            // SpawnEnemies(currentWave.enemyPrefab);
+
+            for(int i = 0; i < currentWave.enemyCounts; i++)
             {
-                SpawnEnemies(currentWave.enemyPrefab, currentWave.enemyCounts[i]);
-                yield return new WaitForSeconds(currentWave.timeBetweenEnemies);
+                Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                Instantiate(currentWave.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+                yield return new WaitForSeconds(1.3f);
             }
 
+            yield return new WaitForSeconds(currentWave.timeBetweenEnemies);
+
             waveIndex++;
+            OnNextWave?.Invoke(waveIndex, waveDoorType);
+            // Debug.Log($"WW: NEXT WAVE {waveIndex}");
         }
-        else
-        {
-            Debug.Log("All waves completed!");
-        }
+
+        // Debug.Log("All waves completed!");
+        isAllWaveCompleted = true;
+        EnemyRoundManager.Instance.CheckIfCanSpawnBoss();
     }
 
-    void SpawnEnemies(EnemyTest enemyPrefab, int count)
+    void SpawnEnemies(EnemyTest enemyPrefab)
     {
-        for (int i = 0; i < count; i++)
-        {
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
-}
-
-
-
-[System.Serializable]
-public class Wave
-{
-    public float startDelay = 2.0f;
-    public float timeBetweenEnemies = 1.0f;
-    public EnemyTest enemyPrefab;
-    public int[] enemyCounts;
 }
