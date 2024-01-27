@@ -9680,6 +9680,8 @@ GameObject:
   - component: {fileID: 6907027237998840233}
   - component: {fileID: 3483229418859311851}
   - component: {fileID: 2060721560732743276}
+  - component: {fileID: 4258618404576540046}
+  - component: {fileID: 6128752634548285313}
   m_Layer: 0
   m_Name: Fire ring
   m_TagString: Untagged
@@ -14503,6 +14505,43 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!136 &4258618404576540046
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598224445468668448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6128752634548285313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598224445468668448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b8e901f62d7b94ea93aa15b6975100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInLava: 0
+  damageEveryX: 3
 --- !u!1 &6298976259625162115
 GameObject:
   m_ObjectHideFlags: 0

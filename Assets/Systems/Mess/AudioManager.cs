@@ -11,10 +11,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] float customWait = 4;
     private void Start()
     {
-        StartCoroutine(Waaaa());
+        StartCoroutine(SingTrack1()); // sync
     }
 
-    IEnumerator Waaaa()
+    IEnumerator SingTrack1()
     {
         
         yield return new WaitForSeconds(customWait);

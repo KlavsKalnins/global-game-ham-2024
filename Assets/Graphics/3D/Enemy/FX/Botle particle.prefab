@@ -4850,6 +4850,7 @@ GameObject:
   - component: {fileID: 6718011223974593427}
   - component: {fileID: 9099096632053814791}
   - component: {fileID: 461304543935312397}
+  - component: {fileID: 1469319694700801722}
   m_Layer: 0
   m_Name: Botle particle
   m_TagString: Untagged
@@ -9671,6 +9672,21 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1469319694700801722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041564647059409512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621ef54afdfc7e6438e14c4ed2576ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6128752634548285313, guid: 8afbcb784052d194abd6141b0f033e41, type: 3}
+  target: {fileID: 0}
+  instantiateAfterX: 0.5
 --- !u!1 &8041201047208212199
 GameObject:
   m_ObjectHideFlags: 0

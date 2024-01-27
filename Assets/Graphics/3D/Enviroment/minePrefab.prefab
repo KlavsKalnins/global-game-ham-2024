@@ -4841,8 +4841,9 @@ GameObject:
   - component: {fileID: 7156977482279858823}
   - component: {fileID: 6066886142804173082}
   - component: {fileID: 7798423831452471458}
+  - component: {fileID: 6483928752945084246}
   m_Layer: 0
-  m_Name: mine_1
+  m_Name: minePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4856,11 +4857,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4614113625297221992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6636211451868386593}
+  - {fileID: 462985998221819385}
   - {fileID: 4528359782005639911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4916,3 +4919,223 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6483928752945084246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614113625297221992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7db6682c405ed34988f787efb5d248a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 7798423831452471458}
+  radius: 5
+  damage: 2
+  timeUntilDetonate: 0.5
+  particle: {fileID: 5500754742768817022}
+  didExplode: 0
+  particledetonateRed: {fileID: 3549347386474080483}
+--- !u!1 &7871069601753094450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6636211451868386593}
+  - component: {fileID: 8265677650581673642}
+  - component: {fileID: 447989291924478361}
+  m_Layer: 0
+  m_Name: TriggerMine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6636211451868386593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871069601753094450}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7156977482279858823}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8265677650581673642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871069601753094450}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &447989291924478361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871069601753094450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f650b7ca8b6a1274db2bee9a6ed6797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6483928752945084246}
+        m_TargetAssemblyTypeName: Mine, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &485201549594808681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7156977482279858823}
+    m_Modifications:
+    - target: {fileID: 49897332746122689, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760828195388827338, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_Name
+      value: Mine explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760828195388827338, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399063295889408535, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399063295889408535, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178933411236140753, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559135586171518752, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819483500237490323, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350839072924975966, guid: 69034b113a8531742a1e67ed0c7a1794,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69034b113a8531742a1e67ed0c7a1794, type: 3}
+--- !u!4 &462985998221819385 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 60538504365272208, guid: 69034b113a8531742a1e67ed0c7a1794,
+    type: 3}
+  m_PrefabInstance: {fileID: 485201549594808681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5500754742768817022 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5399063295889408535, guid: 69034b113a8531742a1e67ed0c7a1794,
+    type: 3}
+  m_PrefabInstance: {fileID: 485201549594808681}
+  m_PrefabAsset: {fileID: 0}

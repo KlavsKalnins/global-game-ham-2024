@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,19 +7,22 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
     public static int aliveCount;
     public static Action NoEnemiesAreAlive;
 
-    [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator animator;
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected Animator animator;
     [SerializeField] StatsClass stats;
     
 
-    [SerializeField] bool hasBeenStun;
+    [SerializeField] protected bool hasBeenStun;
     [SerializeField] float attackDistance = 1.5f;
     [SerializeField] float attackTime = 1f;
     [SerializeField] bool canTakeDamage = true;
     [SerializeField] float immortalSeconds = 0.2f;
 
+    [SerializeField] bool canDroppable;
     [SerializeField] GameObject droppablePrefab;
     [SerializeField] float droppableChance = 0.2f;
+
+    [SerializeField] IAttackable attackable;
 
     private void OnEnable()
     {
@@ -38,18 +38,19 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Setup();
     }
 
-    void Setup()
+    protected virtual void Setup()
     {
+        attackable = GetComponent<IAttackable>();
         agent.speed = stats.WalkingSpeed;
         agent.stoppingDistance = attackDistance;
     }
 
-    void Start()
+    protected virtual void Start()
     {
         if (agent != null)
         {
@@ -57,7 +58,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (agent != null && !hasBeenStun && agent.isActiveAndEnabled)
         {
@@ -65,22 +66,23 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 animator.SetBool("Attack", true);
+                animator.SetBool("Running", false);
             }
             else
             {
-                // Debug.Log("running");
                 animator.SetBool("Attack", false);
-                
+                animator.SetBool("Running", true);
             }
         }
     }
 
-    void PerformAttack()
+    protected virtual void PerformAttack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, PlayerHive.Instance.transform.position);
         if (distanceToPlayer <= agent.stoppingDistance)
         {
-            PlayerHive.Instance.TakeDamage(stats.Damage);
+            attackable.PerformAttack();
+            //PlayerHive.Instance.TakeDamage(stats.Damage);
             // Debug.Log("Performing Attack! END");
         } 
         else
@@ -90,7 +92,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if (!canTakeDamage) return;
         canTakeDamage = false;
@@ -98,7 +100,8 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
 
         if (stats.Health <= 0)
         {
-            Droppable();
+            if (canDroppable)
+                Droppable();
             Destroy(gameObject);
         }
 
@@ -108,7 +111,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         });
     }
 
-    void Droppable()
+    protected virtual void Droppable()
     {
         if (UnityEngine.Random.Range(0f, 1f) <= droppableChance)
         {

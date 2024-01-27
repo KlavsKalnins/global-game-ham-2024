@@ -8,15 +8,40 @@ public class PlayerHive : MonoBehaviour, IDamagable
     public bool isJumpSmashInvulnerability;
 
     [SerializeField] HumanoidStatsSO stats;
+    [SerializeField] int playerGameHealth;
+    [SerializeField] bool cheatsEnabled;
+
+    [SerializeField] KeyCode firstKey = KeyCode.Tilde; // key manager
+    [SerializeField] KeyCode secondKey = KeyCode.LeftAlt;
 
     private void OnEnable()
     {
         Instance = this;
-        stats.Health = 3;
+        playerGameHealth = stats.Health;
+
     }
     private void Start()
     {
-        PlayerHealthUI.Instance.UpdateHealth(stats.Health);
+        PlayerHealthUI.Instance.UpdateHealth(playerGameHealth);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(firstKey) && Input.GetKeyDown(secondKey))
+        {
+            
+        }
+        if (cheatsEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+
+            }
+        }
     }
 
     public IEnumerator MeleeAction()
@@ -33,14 +58,14 @@ public class PlayerHive : MonoBehaviour, IDamagable
     }
     public int GetHealthAmount()
     {
-        return stats.Health;
+        return playerGameHealth;
     }
 
     public void TakeDamage(int value)
     {
-        stats.Health -= value;
-        PlayerHealthUI.Instance.UpdateHealth(stats.Health);
-        if (stats.Health <= 0)
+        playerGameHealth -= value;
+        PlayerHealthUI.Instance.UpdateHealth(playerGameHealth);
+        if (playerGameHealth <= 0)
         {
             Destroy(gameObject);
             // SceneManager.LoadScene(0);
