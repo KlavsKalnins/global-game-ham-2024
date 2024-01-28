@@ -68,6 +68,10 @@ public class EnemySecondBehavior : EnemyBehavior
                 // Player is within middle range, idle
                 agent.ResetPath();  // Stop the agent
                 //animator.SetBool("Attack", true);
+
+                if (PlayerHive.Instance.isJumpSmashInvulnerability)
+                    return;
+
                 animator.SetTrigger("AttackTrigger");
                 animator.SetBool("Running", false);
             }
@@ -101,6 +105,8 @@ public class EnemySecondBehavior : EnemyBehavior
         {
             return;
         }
+        if (PlayerHive.Instance.isJumpSmashInvulnerability)
+            return;
         // Instantiate the prefab
         var thrownObject = Instantiate(molotovPrefab, transform.position, Quaternion.identity);
         thrownObject.target = PlayerHive.Instance.transform;

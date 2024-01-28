@@ -220,8 +220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   ammoAmount: 1000
-  clipSize: 4
-  ammoInChaimber: 4
+  clipSize: 6
+  ammoInChaimber: 6
   damage: 1
   fireRate: 0.2
   reloadSeconds: 3
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   playDownForceAfterSeconds: 1.25
   rigidbody: {fileID: 7281635443671870024}
   meleeUI: {fileID: 0}
+  smashRadius: 7
 --- !u!4 &3060576826495689054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 906391337350146098, guid: f7e515706febd5248b93baae69c642f6,
