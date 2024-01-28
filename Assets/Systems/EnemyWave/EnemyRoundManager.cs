@@ -13,19 +13,27 @@ public class EnemyRoundManager : MonoBehaviour
     [SerializeField] EnemyWaveManager leftDoorWave; // + 5  + rightDoorWave.count
     [SerializeField] EnemyWaveManager rightDoorWave;
 
+    [SerializeField] GameObject[] startingEnemies;
+
     private void Awake()
     {
         Instance = this;
+        foreach (GameObject go in startingEnemies)
+        {
+            go.SetActive(false);
+        }
     }
 
     private void OnEnable()
     {
         EnemyWaveManager.OnNextWave += OnWavesNext;
+        HudManager.OnGameStart += DoStart;
     }
 
     private void OnDisable()
     {
         EnemyWaveManager.OnNextWave -= OnWavesNext;
+        HudManager.OnGameStart -= DoStart;
     }
 
     void OnWavesNext(int waveIndex, WaveDoorType doorType)
@@ -52,14 +60,19 @@ public class EnemyRoundManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void DoStart()
     {
+        Debug.Log("KKKKK:: start");
+        foreach (GameObject go in startingEnemies)
+        {
+            go.SetActive(true);
+        }
         StartCoroutine(StartGame());
     }
 
     IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         mainDoorWave.enabled = true;
     }
 }

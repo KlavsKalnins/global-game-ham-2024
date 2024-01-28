@@ -41,6 +41,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     public void StartDemoWave()
     {
+        Debug.Log($"STARTING WAVE {gameObject.name}");
         StartCoroutine(StartNextWave());
     }
 

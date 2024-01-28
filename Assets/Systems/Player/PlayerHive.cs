@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class PlayerHive : MonoBehaviour, IDamagable
 {
@@ -109,6 +108,8 @@ public class PlayerHive : MonoBehaviour, IDamagable
     {
         Vector3 currentPosition = PlayerGroundShadow.Instance.transform.position;
         OnPlayerDeath?.Invoke();
+
+        // HudMa
 /*        foreach (GameObject v in visualGameObjects)
         {
             v.SetActive(false);
