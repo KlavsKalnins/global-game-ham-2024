@@ -108,6 +108,8 @@ public class PlayerHive : MonoBehaviour, IDamagable
     {
         Vector3 currentPosition = PlayerGroundShadow.Instance.transform.position;
         OnPlayerDeath?.Invoke();
+
+        // HudMa
 /*        foreach (GameObject v in visualGameObjects)
         {
             v.SetActive(false);

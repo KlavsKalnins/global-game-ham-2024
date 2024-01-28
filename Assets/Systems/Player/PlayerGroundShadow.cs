@@ -7,7 +7,6 @@ public class PlayerGroundShadow : MonoBehaviour
     public static PlayerGroundShadow Instance;
     [SerializeField] MeshRenderer shadowMeshRenderer;
 
-
     private void Awake()
     {
         Instance = this;
@@ -17,6 +16,11 @@ public class PlayerGroundShadow : MonoBehaviour
     {
         PlayerManager.OnPlayerIsGrounded += PlayerManagerJumped;
     }
+    private void OnDisable()
+    {
+        PlayerManager.OnPlayerIsGrounded -= PlayerManagerJumped;
+    }
+
     void Update()
     {
         if (PlayerManager.Instance == null)
