@@ -17,7 +17,7 @@ public class PlayerHealthPointUI : MonoBehaviour
 
         if (state)
         {
-            LeanTween.scale(healthPointImage.rectTransform, new Vector3(0.61108f, 0.61108f, 0.61108f), leanTime)
+            LeanTween.scale(healthPointImage.rectTransform, new Vector3(1f, 1f, 1f), leanTime)
                 .setEase(leanTypeEnabled)
                 .setOnComplete(() =>
                 {
