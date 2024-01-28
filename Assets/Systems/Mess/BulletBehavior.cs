@@ -9,11 +9,11 @@ public class BulletBehavior : MonoBehaviour
     public float speed;
     public int damage = 1;
 
-    void Update()
+/*    void Update()
     {
         //transform.position += transform.forward * speed;
         // transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-    }
+    }*/
 
     public IEnumerator DeathTimer(float seconds)
     {
@@ -27,8 +27,11 @@ public class BulletBehavior : MonoBehaviour
     {
         if (other.CompareTag("Enemyy"))
         {
-            Debug.Log("ahujjjeeeenn");
             other.GetComponent<IDamagable>().TakeDamage(damage);
+        }
+        if (other.CompareTag("EnvObj"))
+        {
+            Destroy(gameObject);
         }
     }
 }
