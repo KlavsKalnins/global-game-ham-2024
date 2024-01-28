@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDelay: 2
   timeBetweenEnemies: 1
-  enemyPrefab: {fileID: 36398950120277651, guid: f0d1c7e6d4fe93d4ab35148df1b3bca0,
+  enemyPrefab: {fileID: 101101072775562034, guid: 0362735a8ba18cf4db7dd925051ba82c,
     type: 3}
-  enemyCounts: 3
+  enemyCounts: 1

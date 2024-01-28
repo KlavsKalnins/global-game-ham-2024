@@ -11,7 +11,6 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] StatsClass stats;
-    
 
     [SerializeField] protected bool hasBeenStun;
     [SerializeField] float attackDistance = 1.5f;
@@ -124,11 +123,12 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
             canTakeDamage = true;
         });
     }
+
     IEnumerator StunWait()
     {
         hasBeenStun = true;
         agent.SetDestination(gameObject.transform.position);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         hasBeenStun = false;
     }
 
