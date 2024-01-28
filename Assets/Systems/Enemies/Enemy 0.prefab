@@ -609,12 +609,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6604026663819941105}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &3916355448604230359 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1297168886540888538, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6604026663819941105}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6298106590364903840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e5dd6fa8b4719aa4dbbce64f7c8a334e,
@@ -649,7 +643,7 @@ MonoBehaviour:
   agent: {fileID: 2706488874303720347}
   animator: {fileID: 778175966432373088}
   stats:
-    Health: 2
+    Health: 1
     Damage: 1
     WalkingSpeed: 2.5
   hasBeenStun: 0
@@ -663,7 +657,6 @@ MonoBehaviour:
   droppableChance: 0.2
   dieParticle: {fileID: 1562453558865200842, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
     type: 3}
-  skin: {fileID: 3916355448604230359}
 --- !u!195 &2706488874303720347
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -2,16 +2,87 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum AudioTypes
+{
+    PlayerReload,
+    PlayerDeath,
+    PlayerJumping,
+    IntroSound,
+    BattleSound,
+}
+
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     public AudioSource[] audioSources;
     private float bpm = 173f;
     private Coroutine audioTransitionCoroutine;
 
     [SerializeField] float customWait = 4;
+
+    [SerializeField] AudioSource playerDeathAudio;
+    [SerializeField] AudioSource playerReloadAudio;
+    [SerializeField] AudioSource playerJumpingAudio;
+
+    [SerializeField] AudioSource battleSound;
+    [SerializeField] AudioSource introSound;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
-        StartCoroutine(SingTrack1()); // sync
+        // StartCoroutine(SingTrack1()); // sync
+    }
+
+    public void PlayAudio(AudioTypes type, bool state = true)
+    {
+        switch (type)
+        {
+            case AudioTypes.PlayerReload:
+                if (!state)
+                {
+                    playerReloadAudio.Stop();
+                    return;
+                }
+                playerReloadAudio.Play();
+                break;
+            case AudioTypes.PlayerDeath:
+                if (!state)
+                {
+                    playerDeathAudio.Stop();
+                    return;
+                }
+                playerDeathAudio.Play();
+                break;
+            case AudioTypes.PlayerJumping:
+                if (!state)
+                {
+                    playerJumpingAudio.Stop();
+                    return;
+                }
+                playerJumpingAudio.Play();
+                break;
+            case AudioTypes.IntroSound:
+                if (!state)
+                {
+                    introSound.Stop();
+                    return;
+                }
+                introSound.Play();
+                break;
+            case AudioTypes.BattleSound:
+                if (!state)
+                {
+                    battleSound.Stop();
+                    return;
+                }
+                battleSound.Play();
+                break;
+
+        }
     }
 
     IEnumerator SingTrack1()

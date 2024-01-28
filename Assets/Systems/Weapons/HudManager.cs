@@ -32,6 +32,7 @@ public class HudManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        AudioManager.Instance.PlayAudio(AudioTypes.IntroSound);
     }
 
     void Start()
@@ -67,6 +68,8 @@ public class HudManager : MonoBehaviour
         OnGameStart?.Invoke();
         playerObject.SetActive(true);
         ToggleMainMenuCanvasGroup(false);
+        AudioManager.Instance.PlayAudio(AudioTypes.BattleSound);
+        AudioManager.Instance.PlayAudio(AudioTypes.IntroSound, false);
     }
 
     void OnReloadGame()

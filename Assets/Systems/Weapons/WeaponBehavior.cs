@@ -192,8 +192,7 @@ public class WeaponBehavior : MonoBehaviour
     }
 
     void StartReloading()
-    {
-        Debug.Log($"KK: Reloading");
+    { 
         StopParticle();
         PlayerManager.Instance.animatorUpperBody.SetBool("Shoot", false);
         weaponUiReference.StartReload(reloadSeconds);
@@ -203,6 +202,7 @@ public class WeaponBehavior : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        AudioManager.Instance.PlayAudio(AudioTypes.PlayerReload);
         isReloading = true;
         yield return new WaitForSeconds(reloadSeconds);
         if (ammoAmount >= clipSize)

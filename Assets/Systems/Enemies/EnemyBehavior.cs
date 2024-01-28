@@ -115,6 +115,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
             ParticleManager.Instance.SpawnParticle(reff, dieParticle);
             if (canDroppable)
                 Droppable();
+            EnemyAudio.Instance.PlayAudio();
             Destroy(gameObject);
         }
 

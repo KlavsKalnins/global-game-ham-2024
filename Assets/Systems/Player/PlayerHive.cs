@@ -106,6 +106,7 @@ public class PlayerHive : MonoBehaviour, IDamagable
 
     void OnGameObjectDestrojed()
     {
+        AudioManager.Instance.PlayAudio(AudioTypes.PlayerDeath);
         Vector3 currentPosition = PlayerGroundShadow.Instance.transform.position;
         OnPlayerDeath?.Invoke();
 

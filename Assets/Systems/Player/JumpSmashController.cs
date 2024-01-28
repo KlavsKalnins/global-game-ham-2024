@@ -36,6 +36,7 @@ public class JumpSmashController : MonoBehaviour
         cooldownTimer -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0) // Input.GetMouseButtonDown(0)
         {
+            AudioManager.Instance.PlayAudio(AudioTypes.PlayerJumping);
             PlayerHive.Instance.isJumpSmashInvulnerability = true;
             meleeUI.StartReload(cooldownTime);
             cooldownTimer = cooldownTime;
