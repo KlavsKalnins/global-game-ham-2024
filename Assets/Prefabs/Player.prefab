@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dded79ce781c34cb02d471974639d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
+  cooldownTime: 30
   cooldownTimer: 0
   force: 10
   forceUp: 10

@@ -57,14 +57,14 @@ public class EnemySecondBehavior : EnemyBehavior
             if (distanceToPlayer > chaseDistance)
             {
                 // Player is far, chase
-                //Debug.Log("MOL: CHASE");
+                Debug.Log("MOL: CHASE");
                 agent.SetDestination(PlayerHive.Instance.transform.position);
-                animator.SetBool("Attack", false);
+                //animator.SetBool("Attack", false);
                 animator.SetBool("Running", true);
             }
             else if (distanceToPlayer > idleDistance)
             {
-                //Debug.Log("MOL: ATTACK");
+                Debug.Log("MOL: ATTACK");
                 // Player is within middle range, idle
                 agent.ResetPath();  // Stop the agent
                 //animator.SetBool("Attack", true);
@@ -78,9 +78,13 @@ public class EnemySecondBehavior : EnemyBehavior
             else
             {
                 if (isRunningAway)
+                {
+                    animator.SetBool("Running", true);
                     return;
+                }
+                    
                 isRunningAway = true;
-                //Debug.Log("MOL: RUN AWAY");
+                Debug.Log("MOL: RUN AWAY");
 
                 // Player is close, move in opposite direction
                 // Vector3 oppositeDirection = transform.position - PlayerHive.Instance.transform.position;
@@ -92,7 +96,7 @@ public class EnemySecondBehavior : EnemyBehavior
                 runawaySpot = runAway[Random.Range(0, runAway.Length - 1)];
 
                 agent.SetDestination(runawaySpot.transform.position);
-                animator.SetBool("Attack", false);
+                //animator.SetBool("Attack", false);
                 animator.SetBool("Running", true);
 
             }

@@ -72,7 +72,7 @@ public class JumpSmashController : MonoBehaviour
                 IDamagable damagable = collider.GetComponent<IDamagable>();
                 if (damagable != null)
                 {
-                    damagable.TakeDamage(1);
+                    damagable.TakeDamage(jumpSmashDamage);
                 }
             }
         }
