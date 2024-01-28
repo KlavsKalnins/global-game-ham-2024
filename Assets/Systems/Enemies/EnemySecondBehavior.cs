@@ -69,7 +69,7 @@ public class EnemySecondBehavior : EnemyBehavior
                 agent.ResetPath();  // Stop the agent
                 //animator.SetBool("Attack", true);
 
-                if (PlayerHive.Instance.isJumpSmashInvulnerability)
+                if (PlayerHive.Instance.isJumpSmashInvulnerability || PlayerHive.Instance.playerInSaw)
                     return;
 
                 animator.SetTrigger("AttackTrigger");
@@ -109,7 +109,7 @@ public class EnemySecondBehavior : EnemyBehavior
         {
             return;
         }
-        if (PlayerHive.Instance.isJumpSmashInvulnerability)
+        if (PlayerHive.Instance.isJumpSmashInvulnerability || PlayerHive.Instance.playerInSaw)
             return;
         // Instantiate the prefab
         var thrownObject = Instantiate(molotovPrefab, transform.position, Quaternion.identity);

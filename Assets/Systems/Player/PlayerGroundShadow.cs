@@ -30,6 +30,10 @@ public class PlayerGroundShadow : MonoBehaviour
 
     void PlayerManagerJumped(bool isInAir)
     {
+        if (PlayerHive.Instance.playerInSaw)
+        {
+            return;
+        }
         ToggleShadow(!isInAir);
     }
 

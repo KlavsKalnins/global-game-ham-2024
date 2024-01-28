@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Enemyy
   - EnvObj
+  - Saw
   layers:
   - Default
   - TransparentFX

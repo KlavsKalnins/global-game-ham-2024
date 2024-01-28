@@ -10,6 +10,7 @@ public class PlayerHive : MonoBehaviour, IDamagable
     public static PlayerHive Instance;
     public bool isMeleeInvulnerability;
     public bool isJumpSmashInvulnerability;
+    public bool playerInSaw;
 
     [SerializeField] HumanoidStatsSO stats;
     [SerializeField] int playerGameHealth;
@@ -74,6 +75,10 @@ public class PlayerHive : MonoBehaviour, IDamagable
 
     public void TakeDamage(int value)
     {
+        if (isJumpSmashInvulnerability)
+        {
+            return;
+        }
         playerGameHealth -= value;
         PlayerHealthUI.Instance.UpdateHealth(playerGameHealth);
         if (playerGameHealth <= 0)

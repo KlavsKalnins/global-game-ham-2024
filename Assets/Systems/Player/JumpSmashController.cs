@@ -67,7 +67,7 @@ public class JumpSmashController : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, smashRadius);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Player") || collider.CompareTag("Enemyy"))
+            if (collider.CompareTag("Enemyy"))
             {
                 IDamagable damagable = collider.GetComponent<IDamagable>();
                 if (damagable != null)
