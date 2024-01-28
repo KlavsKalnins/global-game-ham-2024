@@ -655,6 +655,8 @@ MonoBehaviour:
   droppablePrefab: {fileID: 4614113625297221992, guid: fb9a63f2cbdd38d4790441d25a877304,
     type: 3}
   droppableChance: 0.2
+  dieParticle: {fileID: 1562453558865200842, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
+    type: 3}
 --- !u!195 &2706488874303720347
 NavMeshAgent:
   m_ObjectHideFlags: 0

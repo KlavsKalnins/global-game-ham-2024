@@ -119,7 +119,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.962
+      value: -44.848633
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
@@ -129,27 +129,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.6970005
+      value: 39.452816
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.13052659
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.9914448
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
@@ -159,7 +159,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b519dc7da0375e44ca92b1eced6a3340,
         type: 3}
@@ -1252,6 +1252,8 @@ MonoBehaviour:
   canDroppable: 0
   droppablePrefab: {fileID: 0}
   droppableChance: 0.2
+  dieParticle: {fileID: 1562453558865200842, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
+    type: 3}
   chaseDistance: 12
   idleDistance: 10
   runAwayMultiplier: -4

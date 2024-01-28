@@ -23,6 +23,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
     [SerializeField] float droppableChance = 0.2f;
 
     [SerializeField] IAttackable attackable;
+    [SerializeField] ParticleSystem dieParticle;
 
     private void OnEnable()
     {
@@ -109,6 +110,8 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
 
         if (stats.Health <= 0)
         {
+            Vector3 reff = transform.position;
+            ParticleManager.Instance.SpawnParticle(reff, dieParticle);
             if (canDroppable)
                 Droppable();
             Destroy(gameObject);
