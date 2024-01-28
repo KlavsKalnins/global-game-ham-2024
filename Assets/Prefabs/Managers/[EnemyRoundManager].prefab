@@ -49,3 +49,6 @@ MonoBehaviour:
   mainDoorWave: {fileID: 0}
   leftDoorWave: {fileID: 0}
   rightDoorWave: {fileID: 0}
+  startingEnemies:
+  - {fileID: 0}
+  - {fileID: 0}

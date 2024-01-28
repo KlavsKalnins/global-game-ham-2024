@@ -26,6 +26,10 @@ public class JumpSmashController : MonoBehaviour
     {
         PlayerManager.OnPlayerIsGrounded += OnLanded;
     }
+    private void OnDisable()
+    {
+        PlayerManager.OnPlayerIsGrounded -= OnLanded;
+    }
 
     void Update()
     {

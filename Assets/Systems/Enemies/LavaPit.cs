@@ -8,6 +8,18 @@ public class LavaPit : MonoBehaviour
     [SerializeField] bool isPlayerInLava;
     [SerializeField] float damageEveryX = 3f;
 
+
+    private void Awake()
+    {
+        StartCoroutine(LavaDeath());
+    }
+
+    IEnumerator LavaDeath()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroy(gameObject);
+    }
+
     IEnumerator WhileInLava()
     {
         while (isPlayerInLava)
