@@ -7027,6 +7027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy die effect
       objectReference: {fileID: 0}
+    - target: {fileID: 5233093246117384934, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6878148017790128831, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
         type: 3}
       propertyPath: m_LocalPosition.x
