@@ -19,6 +19,8 @@ public class HudManager : MonoBehaviour
 
     [SerializeField] GameObject playerObject;
 
+    [SerializeField] float reloadSceneInSeconds = 1.5f;
+
     private void OnEnable()
     {
         PlayerHive.OnPlayerDeath += OnReloadGame;
@@ -80,7 +82,7 @@ public class HudManager : MonoBehaviour
 
     IEnumerator WaitABitForReloadGame()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(reloadSceneInSeconds);
         SceneManager.LoadScene(0);
     }
 

@@ -118,7 +118,8 @@ public class PlayerHive : MonoBehaviour, IDamagable
         }*/
 
         ParticleManager.Instance.SpawnParticle(currentPosition, playerDieParticle);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
 /*        LeanTween.delayedCall(0.01f, () =>
         {
             Destroy(gameObject);
