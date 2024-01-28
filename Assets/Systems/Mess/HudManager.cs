@@ -20,11 +20,11 @@ public class HudManager : MonoBehaviour
         weaponCanvasGroup.alpha = 0f;
         LeanTween.delayedCall(3, () =>
         {
-            LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 3).setEase(LeanTweenType.easeInOutSine);
+            LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 1).setEase(LeanTweenType.easeInOutSine);
         });
 
 
-        LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 3).setEase(LeanTweenType.easeInOutSine);
+        LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 1).setEase(LeanTweenType.easeInOutSine);
     }
 
     public void AddWeaponUI(WeaponBehavior weapon)
