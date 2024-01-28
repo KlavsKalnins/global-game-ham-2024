@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -107,6 +108,7 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         if (!canTakeDamage) return;
         canTakeDamage = false;
         stats.Health -= damage;
+        StartCoroutine(StunWait());
 
         if (stats.Health <= 0)
         {
@@ -121,6 +123,13 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
         {
             canTakeDamage = true;
         });
+    }
+    IEnumerator StunWait()
+    {
+        hasBeenStun = true;
+        agent.SetDestination(gameObject.transform.position);
+        yield return new WaitForSeconds(1f);
+        hasBeenStun = false;
     }
 
     protected virtual void Droppable()
