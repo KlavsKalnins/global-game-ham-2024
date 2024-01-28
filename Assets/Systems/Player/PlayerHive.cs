@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHive : MonoBehaviour, IDamagable
 {
@@ -118,7 +119,8 @@ public class PlayerHive : MonoBehaviour, IDamagable
         }*/
 
         ParticleManager.Instance.SpawnParticle(currentPosition, playerDieParticle);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        StartCoroutine(ReloadScene());
         //Destroy(gameObject);
 /*        LeanTween.delayedCall(0.01f, () =>
         {
@@ -129,5 +131,14 @@ public class PlayerHive : MonoBehaviour, IDamagable
         // call player manager
         // disable
         //gameObject.SetActive(false);
+    }
+    IEnumerator ReloadScene()
+    {
+        foreach (GameObject v in visualGameObjects)
+        {
+            v.SetActive(false);
+        }
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene(0);
     }
 }
