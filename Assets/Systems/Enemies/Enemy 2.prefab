@@ -1245,7 +1245,7 @@ MonoBehaviour:
     Damage: 1
     WalkingSpeed: 9
   hasBeenStun: 0
-  attackDistance: 1
+  attackDistance: 8
   attackTime: 1
   canTakeDamage: 1
   immortalSeconds: 0.2
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   droppableChance: 0.2
   dieParticle: {fileID: 1562453558865200842, guid: 4cc3e062c4862eb4a8af93b0a8b23285,
     type: 3}
-  chaseDistance: 12
+  chaseDistance: 40
   idleDistance: 10
   runAwayMultiplier: -4
   runAway:
