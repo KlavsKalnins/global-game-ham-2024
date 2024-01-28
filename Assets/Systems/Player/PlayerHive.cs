@@ -23,7 +23,7 @@ public class PlayerHive : MonoBehaviour, IDamagable
     [SerializeField] List<GameObject> visualGameObjects;
     public static Action OnPlayerDeath;
 
-    [SerializeField] 
+    [SerializeField] PlayerMovementController movementController;
 
     private void OnEnable()
     {
@@ -138,6 +138,7 @@ public class PlayerHive : MonoBehaviour, IDamagable
         {
             v.SetActive(false);
         }
+        movementController.enabled = false;
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(0);
     }

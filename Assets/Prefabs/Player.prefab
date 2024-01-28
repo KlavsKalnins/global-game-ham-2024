@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7281635443671870024}
   - component: {fileID: 3647168115225906328}
   - component: {fileID: 4731337134384431769}
-  - component: {fileID: 1088980200894859214}
   - component: {fileID: 1177123533873344135}
   - component: {fileID: 7250025240780292897}
   m_Layer: 7
@@ -21,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7767958086320188934
 Transform:
   m_ObjectHideFlags: 0
@@ -112,24 +111,6 @@ MonoBehaviour:
   damping: 5
   lowerBodyTransform: {fileID: 8647571405514216935}
   rotationTime: 0.05
---- !u!114 &1088980200894859214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480151122680136107}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cb5dc72f26bda64eabbddab0428987c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 5796713016825179885}
-  rangeWeapon: {fileID: 5796713016825179885}
-  isShooting: 0
-  particle: {fileID: 6275408597241708844}
-  particleWaitTillRun: 0.05
 --- !u!114 &1177123533873344135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMeleeInvulnerability: 0
   isJumpSmashInvulnerability: 0
+  playerInSaw: 0
   stats: {fileID: 11400000, guid: e3eacb66b9c9de841be7825a6a7b731d, type: 2}
   playerGameHealth: 1000
   cheatsEnabled: 0
@@ -154,6 +136,7 @@ MonoBehaviour:
   visualGameObjects:
   - {fileID: 3038827659483378749}
   - {fileID: 8307321401596989277}
+  movementController: {fileID: 4731337134384431769}
 --- !u!114 &7250025240780292897
 MonoBehaviour:
   m_ObjectHideFlags: 0
