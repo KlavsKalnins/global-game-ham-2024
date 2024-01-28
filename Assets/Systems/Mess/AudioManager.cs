@@ -10,6 +10,7 @@ public enum AudioTypes
     PlayerJumping,
     IntroSound,
     BattleSound,
+    Idle
 }
 
 public class AudioManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource playerDeathAudio;
     [SerializeField] AudioSource playerReloadAudio;
     [SerializeField] AudioSource playerJumpingAudio;
+    [SerializeField] AudioSource playerIdleAudio;
 
     [SerializeField] AudioSource battleSound;
     [SerializeField] AudioSource introSound;
@@ -80,6 +82,15 @@ public class AudioManager : MonoBehaviour
                     return;
                 }
                 battleSound.Play();
+                break;
+
+            case AudioTypes.Idle:
+                if (!state)
+                {
+                    playerIdleAudio.Stop();
+                    return;
+                }
+                playerIdleAudio.Play();
                 break;
 
         }

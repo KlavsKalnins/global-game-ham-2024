@@ -70,6 +70,7 @@ public class HudManager : MonoBehaviour
         ToggleMainMenuCanvasGroup(false);
         AudioManager.Instance.PlayAudio(AudioTypes.BattleSound);
         AudioManager.Instance.PlayAudio(AudioTypes.IntroSound, false);
+        AudioManager.Instance.PlayAudio(AudioTypes.Idle);
     }
 
     void OnReloadGame()

@@ -11,6 +11,7 @@ public class LavaPit : MonoBehaviour
 
     private void Awake()
     {
+        PitAudio.Instance.PlayAudio();
         StartCoroutine(LavaDeath());
     }
 
