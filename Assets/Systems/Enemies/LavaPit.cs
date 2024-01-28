@@ -12,6 +12,10 @@ public class LavaPit : MonoBehaviour
     {
         while (isPlayerInLava)
         {
+            if (PlayerHive.Instance == null)
+            {
+                break;
+            }
             PlayerHive.Instance.TakeDamage(1);
             yield return new WaitForSeconds(damageEveryX);
         }

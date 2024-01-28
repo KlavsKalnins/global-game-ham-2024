@@ -27,6 +27,11 @@ public class EnemySecondBehavior : EnemyBehavior
 
     protected override void Update()
     {
+        if (PlayerHive.Instance == null)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.T))  // You can replace this condition with your own trigger
         {
             ThrowObject();
@@ -107,6 +112,10 @@ public class EnemySecondBehavior : EnemyBehavior
 
     void ThrowObject()
     {
+        if (PlayerHive.Instance == null)
+        {
+            return;
+        }
         // Instantiate the prefab
         var thrownObject = Instantiate(molotovPrefab, transform.position, Quaternion.identity);
         thrownObject.target = PlayerHive.Instance.transform;

@@ -1,5 +1,9 @@
+using Codice.Client.Common;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerHive : MonoBehaviour, IDamagable
 {
@@ -13,6 +17,13 @@ public class PlayerHive : MonoBehaviour, IDamagable
 
     [SerializeField] KeyCode firstKey = KeyCode.Tilde; // key manager
     [SerializeField] KeyCode secondKey = KeyCode.LeftAlt;
+
+    [SerializeField] ParticleSystem playerDieParticle;
+
+    [SerializeField] List<GameObject> visualGameObjects;
+    public static Action OnPlayerDeath;
+
+    [SerializeField] 
 
     private void OnEnable()
     {
@@ -67,8 +78,47 @@ public class PlayerHive : MonoBehaviour, IDamagable
         PlayerHealthUI.Instance.UpdateHealth(playerGameHealth);
         if (playerGameHealth <= 0)
         {
-            Destroy(gameObject);
+            OnGameObjectDestrojed();
+            //ParticleManager
+            // playerDieParticle.Play();
+            //Destroy(gameObject);
+
+
+
+            // IDeathParticle
+            /*LeanTween.delayedCall(particleWaitTillRun, () =>
+            {
+                if (playerDieParticle != null)
+                {
+                    playerDieParticle.Play();
+                    Destroy(gameObject);
+                }
+            });*/
+
+
             // SceneManager.LoadScene(0);
         }
+    }
+
+    void OnGameObjectDestrojed()
+    {
+        Vector3 currentPosition = PlayerGroundShadow.Instance.transform.position;
+        OnPlayerDeath?.Invoke();
+/*        foreach (GameObject v in visualGameObjects)
+        {
+            v.SetActive(false);
+        }*/
+
+        ParticleManager.Instance.SpawnParticle(currentPosition, playerDieParticle);
+        Destroy(gameObject);
+/*        LeanTween.delayedCall(0.01f, () =>
+        {
+            Destroy(gameObject);
+        });*/
+        //playerDieParticle.Play();
+
+        // call player manager
+        // disable
+        //gameObject.SetActive(false);
     }
 }

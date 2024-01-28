@@ -52,26 +52,35 @@ public class EnemyBehavior : MonoBehaviour, IDamagable
 
     protected virtual void Start()
     {
+
         if (agent != null)
         {
+            if (PlayerHive.Instance == null)
+            {
+                return;
+            }
             agent.SetDestination(PlayerHive.Instance.transform.position);
         }
     }
 
     protected virtual void Update()
     {
+        if (PlayerHive.Instance == null)
+        {
+            return;
+        }
         if (agent != null && !hasBeenStun && agent.isActiveAndEnabled)
         {
             agent.SetDestination(PlayerHive.Instance.transform.position);
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 animator.SetBool("Attack", true);
-                animator.SetBool("Running", false);
+                //animator.SetBool("Running", false);
             }
             else
             {
                 animator.SetBool("Attack", false);
-                animator.SetBool("Running", true);
+                //animator.SetBool("Running", true);
             }
         }
     }
