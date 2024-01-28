@@ -19,6 +19,8 @@ public class EnemySecondBehavior : EnemyBehavior
 
     [SerializeField] Molotov molotovPrefab;
 
+    [SerializeField] int throwables = 2;
+
     public float throwSpeed = 10f;
     protected override void Start()
     {
@@ -30,11 +32,6 @@ public class EnemySecondBehavior : EnemyBehavior
         if (PlayerHive.Instance == null)
         {
             return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))  // You can replace this condition with your own trigger
-        {
-            ThrowObject();
         }
 
         if (isRunningAway)
@@ -56,17 +53,15 @@ public class EnemySecondBehavior : EnemyBehavior
 
             if (distanceToPlayer > chaseDistance)
             {
-                // Player is far, chase
                 Debug.Log("MOL: CHASE");
                 agent.SetDestination(PlayerHive.Instance.transform.position);
                 //animator.SetBool("Attack", false);
                 animator.SetBool("Running", true);
             }
-            else if (distanceToPlayer > idleDistance)
+            else if (distanceToPlayer > idleDistance && throwables > 0)
             {
                 Debug.Log("MOL: ATTACK");
-                // Player is within middle range, idle
-                agent.ResetPath();  // Stop the agent
+                agent.ResetPath();
                 //animator.SetBool("Attack", true);
 
                 if (PlayerHive.Instance.isJumpSmashInvulnerability || PlayerHive.Instance.playerInSaw)
@@ -111,24 +106,33 @@ public class EnemySecondBehavior : EnemyBehavior
         }
         if (PlayerHive.Instance.isJumpSmashInvulnerability || PlayerHive.Instance.playerInSaw)
             return;
-        // Instantiate the prefab
+
         var thrownObject = Instantiate(molotovPrefab, transform.position, Quaternion.identity);
         thrownObject.target = PlayerHive.Instance.transform;
-        // Calculate the direction towards the target position
+
         Vector3 targetPosition = PlayerHive.Instance.transform.position;
         Vector3 direction = (targetPosition - transform.position).normalized;
 
-        // Calculate the initial velocity for the arc
         float timeToReachTarget = throwSpeed / Physics.gravity.magnitude;
         Vector3 initialVelocity = direction * throwSpeed - 0.5f * Physics.gravity * timeToReachTarget;
 
-        // Optional: Rotate the thrown object to face the target
         thrownObject.transform.LookAt(targetPosition);
 
-        // Use LeanTween to animate the object's position
         LeanTween.move(thrownObject.gameObject, targetPosition, timeToReachTarget)
             .setEase(LeanTweenType.easeOutQuad);
-            //.setOnComplete(() => Destroy(thrownObject));  // Optional: Destroy the object when the animation is complete
+
+        throwables--;
+        if (throwables == 0)
+        {
+            StartCoroutine(Reload());
+        }
+        
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(2f);
+        throwables = 2;
     }
 
     protected override void PerformAttack()

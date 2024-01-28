@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83b57d70ff426d46939fd8c4c1cb31f, type: 3}
   m_Name: Door_1_Wave 5
   m_EditorClassIdentifier: 
-  startDelay: 2
-  timeBetweenEnemies: 2
+  startDelay: 1
+  timeBetweenEnemies: 1
   enemyPrefab: {fileID: 36398950120277651, guid: f0d1c7e6d4fe93d4ab35148df1b3bca0,
     type: 3}
   enemyCounts: 6

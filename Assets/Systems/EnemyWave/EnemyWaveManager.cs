@@ -25,10 +25,13 @@ public class EnemyWaveManager : MonoBehaviour
 
     public bool isAllWaveCompleted;
 
+    public bool waveScript = true;
+
     private void OnEnable()
     {
         EnemyTest.NoEnemiesAreAlive += CheckIfDemoWaveCompleted;
-        StartDemoWave();
+        if (waveScript)
+            StartDemoWave();
     }
 
     void CheckIfDemoWaveCompleted()
@@ -75,7 +78,7 @@ public class EnemyWaveManager : MonoBehaviour
         EnemyRoundManager.Instance.CheckIfCanSpawnBoss();
     }
 
-    void SpawnEnemies(EnemyTest enemyPrefab)
+    public void SpawnEnemies(EnemyTest enemyPrefab)
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
