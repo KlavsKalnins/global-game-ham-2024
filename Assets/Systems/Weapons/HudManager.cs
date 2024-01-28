@@ -21,6 +21,8 @@ public class HudManager : MonoBehaviour
 
     [SerializeField] float reloadSceneInSeconds = 1.5f;
 
+    [SerializeField] CanvasGroup tintCanvasGroup;
+
     private void OnEnable()
     {
         PlayerHive.OnPlayerDeath += OnReloadGame;
@@ -28,21 +30,22 @@ public class HudManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerHive.OnPlayerDeath -= OnReloadGame;
-
     }
 
     private void Awake()
     {
         Instance = this;
-        AudioManager.Instance.PlayAudio(AudioTypes.IntroSound);
+        tintCanvasGroup.alpha = 1.0f;
     }
 
     void Start()
     {
-        weaponCanvasGroup.alpha = 0f;
-        LeanTween.delayedCall(3, () =>
+        AudioManager.Instance.PlayAudio(AudioTypes.IntroSound);
+        weaponCanvasGroup.alpha = 1f;
+        LeanTween.delayedCall(1, () =>
         {
-            LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 1).setEase(LeanTweenType.easeInOutSine);
+            ToggleTint(false);
+            //LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 1).setEase(LeanTweenType.easeInOutSine);
         });
 
         LeanTween.alphaCanvas(weaponCanvasGroup, 1f, 1).setEase(LeanTweenType.easeInOutSine);
@@ -95,6 +98,19 @@ public class HudManager : MonoBehaviour
         } else
         {
             LeanTween.alphaCanvas(mainMenuCanvasGroup, 0f, 0.5f).setEase(LeanTweenType.easeInOutSine);
+        }
+    }
+
+    void ToggleTint(bool state, float speed = 0.5f)
+    {
+        if (state)
+        {
+            LeanTween.alphaCanvas(tintCanvasGroup, 1f, speed).setEase(LeanTweenType.easeInOutSine);
+
+        }
+        else
+        {
+            LeanTween.alphaCanvas(tintCanvasGroup, 0f, speed).setEase(LeanTweenType.easeInOutSine);
         }
     }
 
