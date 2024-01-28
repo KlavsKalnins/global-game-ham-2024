@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JumpSmashController : MonoBehaviour
 {
+    public static JumpSmashController Instance;
     [SerializeField] float cooldownTime = 3;
     [SerializeField] float cooldownTimer = 0;
     [SerializeField] float force = 10f;
@@ -17,6 +18,10 @@ public class JumpSmashController : MonoBehaviour
 
     public static int jumpSmashDamage = 2;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void OnEnable()
     {
         PlayerManager.OnPlayerIsGrounded += OnLanded;
@@ -46,11 +51,30 @@ public class JumpSmashController : MonoBehaviour
         rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
     }
 
+    [SerializeField] float smashRadius = 7f;
+
     void OnLanded(bool state)
     {
         if (PlayerHive.Instance.isJumpSmashInvulnerability == true && state == true)
         {
-            PlayerHive.Instance.isJumpSmashInvulnerability = false;
+            Smash();
+        }
+    }
+
+    public void Smash()
+    {
+        PlayerHive.Instance.isJumpSmashInvulnerability = false;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, smashRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Enemyy"))
+            {
+                IDamagable damagable = collider.GetComponent<IDamagable>();
+                if (damagable != null)
+                {
+                    damagable.TakeDamage(jumpSmashDamage);
+                }
+            }
         }
     }
 }

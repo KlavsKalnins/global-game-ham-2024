@@ -74,4 +74,14 @@ public class PlayerMovementController : MonoBehaviour
             LeanTween.rotateY(lowerBodyTransform.gameObject, rotationAngle, rotationTime).setEase(LeanTweenType.easeInOutQuad);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemyy") && PlayerHive.Instance.isJumpSmashInvulnerability)
+        {
+            // PlayerHive.Instance.isJumpSmashInvulnerability = false;
+            Destroy(collision.gameObject);
+            JumpSmashController.Instance.Smash();
+        }
+    }
 }

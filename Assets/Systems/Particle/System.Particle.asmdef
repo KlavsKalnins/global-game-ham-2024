@@ -1,0 +1,16 @@
+{
+    "name": "System.Particle",
+    "rootNamespace": "",
+    "references": [
+        "GUID:554ba94755c9d3b44be21cc3601d145c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
