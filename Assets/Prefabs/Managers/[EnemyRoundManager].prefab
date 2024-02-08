@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7346178477522152021
 Transform:
   m_ObjectHideFlags: 0
@@ -52,3 +52,18 @@ MonoBehaviour:
   startingEnemies:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  enemyTypePrefabs:
+  - {fileID: 36398950120277651, guid: f0d1c7e6d4fe93d4ab35148df1b3bca0, type: 3}
+  - {fileID: 101101072775562034, guid: 0362735a8ba18cf4db7dd925051ba82c, type: 3}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isAdaptive: 0
+  initialSpawnRate: 1
+  spawnRateIncrease: 0.1
+  maxSpawnRate: 0.5
+  initialSecondEnemyChance: 0.2
+  secondEnemyChanceIncrease: 0.05
+  maxSecondEnemyChance: 0.5
